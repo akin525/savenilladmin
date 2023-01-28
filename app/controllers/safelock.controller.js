@@ -14,16 +14,6 @@ exports.safelock =  async (req, res) => {
   try {
     let authorities = [];
 
-    const user = await User.findOne({
-      where: {
-        id: userid,
-      },
-    });
-
-    if (!user) {
-      // req.session = null;
-      return res.status(200).send({status: "0", message: "Kindly login your account."});
-    }
     const allock= await safe.findAll();
 
     return res.status(200).send({
