@@ -64,6 +64,7 @@ module.exports = function(app) {
 
   app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
+      app.get("/api/auth/allock",[authJwt.verifyToken], createlock.safelock);
       app.post("/api/auth/users", users.users);
       app.get("/api/auth/alluser", allusers.allusers);
     app.get("/api/auth/purchase",
