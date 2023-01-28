@@ -9,8 +9,6 @@ const {where} = require("sequelize");
 exports.safelock =  async (req, res) => {
 
 
-  const userid = req.body.userId;
-  var boy;
   try {
     let authorities = [];
 
