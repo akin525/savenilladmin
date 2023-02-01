@@ -15,7 +15,7 @@ exports.product =  async (req, res) => {
 
     return res.status(200).send({
       status:"1",
-      'product': product,
+      'product':product,
     });
 
   } catch (error) {
