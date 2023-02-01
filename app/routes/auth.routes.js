@@ -20,6 +20,7 @@ const credit=require("../controllers/credit.controller");
 const debit=require("../controllers/debit.controller");
 const updte=require("../controllers/update.controller");
 const find=require("../controllers/finduser.controller");
+const product=require("../controllers/product.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -65,6 +66,7 @@ module.exports = function(app) {
   app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
       app.get("/api/auth/allock",[authJwt.verifyToken], createlock.safelock);
+      app.get("/api/auth/product",[authJwt.verifyToken], product.product);
       app.post("/api/auth/users", users.users);
       app.get("/api/auth/alluser", allusers.allusers);
     app.get("/api/auth/purchase",

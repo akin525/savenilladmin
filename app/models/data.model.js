@@ -21,6 +21,9 @@ module.exports = (sequelize, Sequelize) => {
         ramount: {
             type: Sequelize.STRING
         },
+        status: {
+            type: Sequelize.STRING
+        },
     });
     return data;
 };
