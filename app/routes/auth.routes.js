@@ -21,6 +21,7 @@ const debit=require("../controllers/debit.controller");
 const updte=require("../controllers/update.controller");
 const find=require("../controllers/finduser.controller");
 const product=require("../controllers/product.controller");
+const swi=require("../controllers/switch.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -49,6 +50,7 @@ module.exports = function(app) {
 
       dashboard.dashboard);
   app.post("/api/auth/airtime", airtime.airtime);
+  app.post("/api/auth/switch", swi.swit);
   app.post("/api/auth/buydata", buydata.buydata);
   app.post("/api/auth/tv", tv.tv);
   app.post("/api/auth/verifytv", verifytv.verifytv);
