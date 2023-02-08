@@ -6,6 +6,7 @@ const charges=db.charges;
 const bill= db.bill;
 const deposit=db.deposit;
 const lock =db.safelock;
+const no =db.message;
 
 
 
@@ -64,11 +65,6 @@ exports.dashboard =  async (req, res) => {
 
         const week = 1; // The week number you want to sum the amount for
 
-
-
-
-
-
         const dailyTotals = await bill.sum('amount',{
             where:{
                 date: {
@@ -97,6 +93,13 @@ exports.dashboard =  async (req, res) => {
         console.log(yesterdayDepo);
         console.log(today);
 
+        const noti=await no.findOne(
+            {
+                where:{
+                    status:"1",
+                },
+            }
+        );
 
 
         var request = require('request');
@@ -124,6 +127,7 @@ exports.dashboard =  async (req, res) => {
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
                 users:allusers,
+                noti:noti.message,
                 newusers:newusers,
                 pendingtransaction:pendingtransaction,
                 dataprofit:dataprofit??0,
