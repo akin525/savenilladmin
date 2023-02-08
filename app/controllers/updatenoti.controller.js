@@ -3,7 +3,7 @@ const {Op} = require("sequelize");
 const User = db.user;
 const no=db.message;
 exports.Credit =  async (req, res) => {
-    const userid = req.userId;
+    const userid = req.body.userId;
     try {
         let authorities = [];
 
