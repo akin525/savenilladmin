@@ -3,20 +3,9 @@ const {Op} = require("sequelize");
 const User = db.user;
 const no=db.message;
 exports.Credit =  async (req, res) => {
-    const userid = req.body.userId;
     try {
         let authorities = [];
 
-        const user = await User.findOne({
-            where: {
-                id:userid,
-            },
-        });
-
-        if (!user) {
-            // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
-        }
         const objectToUpdate = {
          message:req.body.message,
         }
