@@ -9,7 +9,7 @@ exports.Credit =  async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                username: req.body.username,
+                id:userid,
             },
         });
 
