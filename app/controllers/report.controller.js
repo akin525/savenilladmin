@@ -60,9 +60,9 @@ exports.month =  async (req, res) => {
                 date: {
                     [Op.like]: `%${date}%`,
                 },
-                plan:{
-                    [Op.like]: `%airtime%`,
-                },
+                // plan:{
+                //     [Op.like]: `%airtime%`,
+                // },
             },
         })
         // console.log(allplan);
