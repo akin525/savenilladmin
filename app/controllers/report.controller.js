@@ -20,7 +20,7 @@ exports.month =  async (req, res) => {
         // });
         // if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "You not register as admin."});
+            // return res.status(200).send({status: "0", message: "You not register as admin."});
         // }
 
         const monthcuntdata=await bill.count({
