@@ -7,21 +7,22 @@ const {response} = require("express");
 const {Op} = require("sequelize");
 
 exports.month =  async (req, res) => {
-    const userid = req.body.userId;
+    // const userid = req.body.userId;
     const date= req.body.date;
+
     var boy;
     try {
         let authorities = [];
-        // const user = await User.findOne({
-        //     where: {
-        //         id: userid,
-        //         role: "admin",
-        //     },
-        // });
-        // if (!user) {
-            // req.session = null;
-            // return res.status(200).send({status: "0", message: "You not register as admin."});
-        // }
+        const user = await User.findOne({
+            where: {
+                id: userid,
+                role: "admin",
+            },
+        });
+        if (!user) {
+            req.session = null;
+            return res.status(200).send({status: "0", message: "You not register as admin."});
+        }
 
         const monthcuntdata=await bill.count({
             where:{
@@ -36,7 +37,7 @@ exports.month =  async (req, res) => {
         const monthsumdata= await bill.sum('amount',{
             where:{
                 date: {
-                    [Op.like]: `%2023-02%`,
+                    [Op.like]: `%${date}%`,
                 },
                 refid:{
                     [Op.like]: `%data%`,
@@ -48,7 +49,7 @@ exports.month =  async (req, res) => {
         const monthcuntairtime= await bill.count({
             where:{
                 date: {
-                    [Op.like]: `%2023-02%`,
+                    [Op.like]: `%${date}%`,
                 },
                 plan:{
                     [Op.like]: `%airtime%`,
@@ -58,7 +59,7 @@ exports.month =  async (req, res) => {
         const monthsumtairtime= await bill.sum('amount',{
             where:{
                 date: {
-                    [Op.like]: `%2023-02%`,
+                    [Op.like]: `%${date}%`,
                 },
                 plan:{
                     [Op.like]: `%airtime%`,
@@ -72,8 +73,6 @@ exports.month =  async (req, res) => {
             datems:monthsumdata,
             airtimec:monthcuntairtime,
             airtimes:monthsumtairtime,
-            datekkk:date,
-            k: 'hello',
         });
 
     } catch (error) {
