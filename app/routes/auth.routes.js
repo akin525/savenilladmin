@@ -23,6 +23,7 @@ const find=require("../controllers/finduser.controller");
 const product=require("../controllers/product.controller");
 const swi=require("../controllers/switch.controller");
 const noti=require("../controllers/updatenoti.controller");
+const report=require("../controllers/report.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -45,6 +46,7 @@ module.exports = function(app) {
     controller.signup
   );
 
+  app.post("/api/auth/report", report.month);
   app.post("/api/auth/noti", noti.Credit);
   app.post("/api/auth/signin", controller.signin);
   app.get("/api/auth/dashboard",
