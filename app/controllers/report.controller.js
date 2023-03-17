@@ -48,7 +48,7 @@ exports.month =  async (req, res) => {
         const monthcuntairtime= await bill.count({
             where:{
                 date: {
-                    [Op.like]: `%${date}%`,
+                    [Op.like]: `%${req.body.date}%`,
                 },
                 plan:{
                     [Op.like]: `%airtime%`,
@@ -58,7 +58,7 @@ exports.month =  async (req, res) => {
         const monthsumtairtime= await bill.sum('amount',{
             where:{
                 date: {
-                    [Op.like]: `%2023-02%`,
+                    [Op.like]: `%${date}%`,
                 },
                 // plan:{
                 //     [Op.like]: `%airtime%`,
