@@ -72,6 +72,7 @@ exports.month =  async (req, res) => {
             datems:monthsumdata,
             airtimec:monthcuntairtime,
             airtimes:monthsumtairtime,
+            date:date,
         });
 
     } catch (error) {
