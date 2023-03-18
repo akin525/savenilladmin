@@ -12,17 +12,6 @@ exports.month =  async (req, res) => {
 
     var boy;
     try {
-        let authorities = [];
-        const user = await User.findOne({
-            where: {
-                id: userid,
-                role: "admin",
-            },
-        });
-        if (!user) {
-            req.session = null;
-            return res.status(200).send({status: "0", message: "You not register as admin."});
-        }
 
         const monthcuntdata=await bill.count({
             where:{
