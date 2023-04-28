@@ -55,10 +55,55 @@ exports.month =  async (req, res) => {
                 },
             },
         })
+        const monthsumtv= await bill.sum('amount',{
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+                plan:{
+                    [Op.like]: `%tv%`,
+                },
+            },
+        })
+        const monthsumtvc= await bill.count({
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+                plan:{
+                    [Op.like]: `%tv%`,
+                },
+            },
+        })
+        const monthsumelectc= await bill.count({
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+                plan:{
+                    [Op.like]: `%elect%`,
+                },
+            },
+        })
+        const monthsumelect= await bill.sum('amount',{
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+                plan:{
+                    [Op.like]: `%elect%`,
+                },
+            },
+        })
         // console.log(allplan);
         return res.status(200).send({
             status:"1",
+            date:date,
             datamc:monthcuntdata,
+            tvc:monthsumtvc,
+            tv:monthsumtv,
+            elect:monthsumelect,
+            electc:monthsumelectc,
             datems:monthsumdata,
             airtimec:monthcuntairtime,
             airtimes:monthsumtairtime,
