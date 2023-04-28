@@ -23,6 +23,7 @@ exports.month =  async (req, res) => {
                 },
             },
         });
+
         const monthsumdata= await bill.sum('amount',{
             where:{
                 date: {
