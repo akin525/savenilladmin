@@ -21,7 +21,7 @@ exports.mark=  async (req, res) => {
         const cr=1;
 
         const user1 = await deposit.update(
-            { status: cr },
+            { result: cr },
             {
                 where: {
                     id:dep.id,

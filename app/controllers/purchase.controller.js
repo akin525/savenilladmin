@@ -27,7 +27,7 @@ exports.purchase =  async (req, res) => {
 
         const allbill =await bill.findAll({
             where:{
-                status:1,
+                result:1,
 
             },
 
@@ -132,7 +132,7 @@ exports.pending =  async (req, res) => {
 
         const allbill =await bill.findAll({
             where: {
-                status: 0,
+                result: 0,
 
             },
         });
