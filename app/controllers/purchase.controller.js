@@ -25,7 +25,13 @@ exports.purchase =  async (req, res) => {
         const  yesterday= new Date(new Date().setDate(new Date().getDate() - 1));
         const yesterdayInYMD = yesterday.toISOString().slice(0,10);
 
-        const allbill =await bill.findAll();
+        const allbill =await bill.findAll({
+            where:{
+                status:1,
+
+            },
+
+        });
         const sumallbill=await  bill.sum('amount');
         const countallbill=await bill.count();
         const counttoday= await bill.count({
@@ -97,6 +103,42 @@ exports.purchase =  async (req, res) => {
             threedaybill:threedaybill??0,
             fourdaybill:fourdaybill??0,
             aweekbill:aweekbill??0,
+        });
+    } catch (error) {
+        return res.status(500).send({message: error.message});
+    }
+
+    res.status(200).send("User Content.");
+
+};
+
+exports.pending =  async (req, res) => {
+    const userid = req.userId;
+    try {
+        let authorities = [];
+
+        const user = await User.findOne({
+            where: {
+                id: userid,
+                role:"admin",
+            },
+        });
+
+
+        if (!user) {
+            // req.session = null;
+            return res.status(200).send({status: "0", message: "Kindly login your account."});
+        }
+
+        const allbill =await bill.findAll({
+            where: {
+                status: 0,
+
+            },
+        });
+
+        return res.status(200).send({
+            all:allbill,
         });
     } catch (error) {
         return res.status(500).send({message: error.message});

@@ -26,6 +26,9 @@ const noti=require("../controllers/updatenoti.controller");
 const report=require("../controllers/report.controller");
 const wreport=require("../controllers/wreport.controller");
 const dreport=require("../controllers/dreport.controller");
+const pending=require("../controllers/purchase.controller");
+const revers=require("../controllers/reverse.controller");
+const success=require("../controllers/success.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -71,6 +74,9 @@ module.exports = function(app) {
   app.post("/api/auth/debit", debit.Debit);
   app.post("/api/auth/update", updte.Updte);
   app.post("/api/auth/finduser", find.find);
+  app.post("/api/auth/reverse", revers.fund);
+  app.post("/api/auth/approve", success.mark);
+  app.post("/api/auth/pending", pending.pending);
 
 
   app.post("/api/auth/data", data.data);
