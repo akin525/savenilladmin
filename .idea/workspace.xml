@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="product">
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/purchase.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/purchase.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/success.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/success.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +127,7 @@
       <workItem from="1682766547839" duration="2705000" />
       <workItem from="1687423585936" duration="2412000" />
       <workItem from="1687521833565" duration="4198000" />
-      <workItem from="1687886537838" duration="3559000" />
+      <workItem from="1687886537838" duration="4294000" />
     </task>
     <task id="LOCAL-00001" summary="hello">
       <created>1674169680636</created>
@@ -333,7 +332,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687893128909</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="product">
+      <created>1687894391895</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1687894391895</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

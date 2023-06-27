@@ -76,7 +76,7 @@ module.exports = function(app) {
   app.post("/api/auth/finduser", find.find);
   app.post("/api/auth/reverse", revers.fund);
   app.post("/api/auth/approve", success.mark);
-  app.post("/api/auth/pending", pending.pending);
+  app.get("/api/auth/pending",[authJwt.verifyToken], pending.pending);
 
 
   app.post("/api/auth/data", data.data);
