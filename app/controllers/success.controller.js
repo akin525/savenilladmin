@@ -1,6 +1,7 @@
 const db = require("../models");
 const User = db.user;
 const deposit=db.deposit;
+const bill= db.bill;
 
 exports.mark=  async (req, res) => {
 
@@ -8,7 +9,7 @@ exports.mark=  async (req, res) => {
     try {
 
 
-        const dep= await deposit.findOne({
+        const dep= await bill.findOne({
             where:{
                 id:req.body.id,
             },
@@ -20,7 +21,7 @@ exports.mark=  async (req, res) => {
         }
         const cr=1;
 
-        const user1 = await deposit.update(
+        const user1 = await bill.update(
             { result: cr },
             {
                 where: {
