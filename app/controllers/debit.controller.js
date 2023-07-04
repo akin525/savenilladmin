@@ -20,6 +20,12 @@ exports.Debit =  async (req, res) => {
             // req.session = null;
             return res.status(200).send({status: "0", message: "User not found",});
         }
+        if (req.body.amount =="") {
+            return res.status(200).send({status:"0", message: "Please enter amount"});
+        }
+        if (req.body.amount =="0") {
+            return res.status(200).send({status:"0", message: "Please enter amount above 0"});
+        }
         const dep= await charge.findOne({
             where:{
                 payment_ref:req.body.refid,
