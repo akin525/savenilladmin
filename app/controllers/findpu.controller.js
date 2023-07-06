@@ -4,7 +4,7 @@ const User = db.user;
 const bill= db.bill;
 
 
-exports.fundback =  async (req, res) => {
+exports.findpu =  async (req, res) => {
 
 
     try {

@@ -29,6 +29,8 @@ const dreport=require("../controllers/dreport.controller");
 const pending=require("../controllers/purchase.controller");
 const revers=require("../controllers/reverse.controller");
 const success=require("../controllers/success.controller");
+const reversrefid=require("../controllers/reverseid.controller");
+const findpurchase=require("../controllers/findpu.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -75,6 +77,9 @@ module.exports = function(app) {
   app.post("/api/auth/update", updte.Updte);
   app.post("/api/auth/finduser", find.find);
   app.post("/api/auth/reverse", revers.fund);
+  app.post("/api/auth/reverseid", reversrefid.fundback);
+  app.post("/api/auth/findp", findpurchase.findpu);
+
   app.post("/api/auth/approve", success.mark);
   app.get("/api/auth/pending",[authJwt.verifyToken], pending.pending);
 
