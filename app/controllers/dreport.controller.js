@@ -2,6 +2,7 @@ const db = require("../models");
 const User = db.user;
 const bill= db.bill;
 const data=db.data;
+const deposit=db.deposit;
 var request = require('request');
 const {response} = require("express");
 const {Op} = require("sequelize");
@@ -23,7 +24,22 @@ exports.daily =  async (req, res) => {
                 },
             },
         });
+        const dailycuntdeposit=await deposit.count({
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+            },
+        });
 
+        const dailysumdeposit= await deposit.sum('amount',{
+            where:{
+                date: {
+                    [Op.like]: `%${date}%`,
+                },
+            },
+
+        });
         const dailysumdata= await bill.sum('amount',{
             where:{
                 date: {
@@ -108,6 +124,8 @@ exports.daily =  async (req, res) => {
             datems:dailysumdata??0,
             airtimec:dailycuntairtime??0,
             airtimes:dailysumtairtime??0,
+            depositc:dailycuntdeposit,
+            deposits:dailysumdeposit,
         });
 
     } catch (error) {
