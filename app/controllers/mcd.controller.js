@@ -80,7 +80,7 @@ exports.vithdrawmcd =  async (req, res) => {
                     'wallet': 'wallet',
                     'amount': req.body.amount,
                     'account_number': req.body.number,
-                    'bank_code': req.body.bankcode,
+                    'bank_code': req.body.code,
                     'bank': req.body.bank
                 }
             };
