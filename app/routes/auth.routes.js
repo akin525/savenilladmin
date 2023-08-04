@@ -31,6 +31,7 @@ const revers=require("../controllers/reverse.controller");
 const success=require("../controllers/success.controller");
 const reversrefid=require("../controllers/reverseid.controller");
 const findpurchase=require("../controllers/findpu.controller");
+const MCD=require("../controllers/mcd.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -96,5 +97,8 @@ module.exports = function(app) {
     app.get("/api/auth/alldeposit",
         [authJwt.verifyToken],
         alldeposit.alldeposit);
-  app.post("/api/auth/signout", controller.signout);
+  app.post("/api/auth/signout", controller.signout)
+  app.get("/api/auth/bank",  [authJwt.verifyToken], MCD.getbanks);
+  app.post("/api/auth/verify", MCD.verifybank);
+  app.post("/api/auth/with", MCD.vithdrawmcd);
 };
