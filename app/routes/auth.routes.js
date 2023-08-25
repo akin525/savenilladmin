@@ -65,6 +65,7 @@ module.exports = function(app) {
       dashboard.dashboard);
   app.post("/api/auth/airtime", airtime.airtime);
   app.post("/api/auth/switch", swi.swit);
+  app.post("/api/auth/updatepro", swi.updatepro);
   app.post("/api/auth/buydata", buydata.buydata);
   app.post("/api/auth/tv", tv.tv);
   app.post("/api/auth/verifytv", verifytv.verifytv);
