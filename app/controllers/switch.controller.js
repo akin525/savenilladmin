@@ -51,7 +51,7 @@ exports.updatepro=  async (req, res) => {
   try {
     const product = await data.findOne({
       where:{
-        id:req.body.id,
+        id:req.body.productid,
       },
     });
     if (req.body.tamount ==""){
