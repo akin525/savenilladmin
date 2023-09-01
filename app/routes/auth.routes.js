@@ -32,6 +32,7 @@ const success=require("../controllers/success.controller");
 const reversrefid=require("../controllers/reverseid.controller");
 const findpurchase=require("../controllers/findpu.controller");
 const MCD=require("../controllers/mcd.controller");
+const reprocess=require("../controllers/reprocess.controller");
 
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -102,4 +103,6 @@ module.exports = function(app) {
   app.get("/api/auth/bank",  [authJwt.verifyToken], MCD.getbanks);
   app.post("/api/auth/verify", MCD.verifybank);
   app.post("/api/auth/with", MCD.vithdrawmcd);
+  app.post("/api/auth/reprocess", reprocess.reprocess);
+  app.post("/api/auth/mark", reprocess.marksuccess);
 };
