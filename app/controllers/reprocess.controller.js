@@ -41,18 +41,38 @@ exports.reprocess = async (req, res) => {
 
         try {
           const response = await request(options);
-          const data1 = JSON.parse(response.body);
 
-          if (data1.success === 1) {
-            processResults.push({
-              status: "1",
-              message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
-              server_res: response,
-            });
-          } else if (data1.success === 0) {
-            processResults.push({
+          // Check if the response is empty
+          if (!response.body) {
+            console.error("Response body is empty");
+            return res.status(200).send({
               status: "0",
-              message: data1.message,
+              message: "Empty response from the server",
+            });
+          }
+
+          // Parse JSON only if the content type is JSON
+          if (response.headers['content-type'] === 'application/json') {
+            const data1 = JSON.parse(response.body);
+
+            if (data1.success === 1) {
+              processResults.push({
+                status: "1",
+                message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
+                server_res: response,
+              });
+            } else if (data1.success === 0) {
+              processResults.push({
+                status: "0",
+                message: data1.message,
+              });
+            }
+          } else {
+            // Handle non-JSON response here if needed
+            console.error("Response is not in JSON format");
+            return res.status(200).send({
+              status: "0",
+              message: "Response is not in JSON format",
             });
           }
         } catch (error) {
@@ -62,6 +82,7 @@ exports.reprocess = async (req, res) => {
             message: error.message,
           });
         }
+
       }
     }
 
