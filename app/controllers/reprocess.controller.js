@@ -19,7 +19,10 @@ exports.reprocess =  async (req, res) => {
               id: element,
             },
           });
-
+         return res.status(200).send({
+           status: "1",
+           message: billRecords,
+         });
           const processResults = [];
 
           for (const process of billRecords) {
@@ -66,11 +69,7 @@ exports.reprocess =  async (req, res) => {
           return processResults;
         };
 
-    // return res.status(200).send({
-    //   status: "1",
-    //   message: "Transaction Marked Successful",
-    //   results: processes,
-    // });
+
   } catch (error) {
     console.error(error);
     return res.status(200).send({
