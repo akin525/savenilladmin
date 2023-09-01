@@ -29,7 +29,7 @@ exports.reprocess =  async (req, res) => {
               },
             });
 
-            const options = {
+            var options = {
               method: 'POST',
               url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
               headers: {
@@ -44,18 +44,18 @@ exports.reprocess =  async (req, res) => {
 
             try {
               const response = await request(options);
-              const data = JSON.parse(response.body);
+              const data1 = JSON.parse(response.body);
 
-              if (data.success === 1) {
+              if (data1.success === 1) {
                 processResults.push({
                   status: "1",
                   message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
                   server_res: response,
                 });
-              } else if (data.success === 0) {
+              } else if (data1.success === 0) {
                 processResults.push({
                   status: "0",
-                  message: data.message,
+                  message: data1.message,
                 });
               }
             } catch (error) {
