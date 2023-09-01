@@ -60,6 +60,10 @@ exports.reprocess =  async (req, res) => {
               }
             } catch (error) {
               console.error(error);
+              return res.status(200).send({
+                status: "0",
+                message: error.message,
+              });
             }
           }
 
