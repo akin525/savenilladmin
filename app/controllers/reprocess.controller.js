@@ -12,10 +12,10 @@ exports.reprocess =  async (req, res) => {
   try {
 
     const processes = await product.all(
-        req.body.map(async (element) => {
+        req.body.productid.map(async (element) => {
           const billRecords = await bill.findAll({
             where: {
-              id: element.productid,
+              id: element,
             },
           });
 
@@ -73,7 +73,7 @@ exports.reprocess =  async (req, res) => {
     // });
   } catch (error) {
     console.error(error);
-    return res.status(500).send({
+    return res.status(200).send({
       status: "0",
       message: error.message,
     });
