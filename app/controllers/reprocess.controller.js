@@ -11,8 +11,9 @@ const {where} = require("sequelize");
 exports.reprocess =  async (req, res) => {
   try {
 
-    const processes = await product.all(
-        req.body.productid.map(async (element) => {
+
+       for (const  element of req.body){
+
           const billRecords = await bill.findAll({
             where: {
               id: element,
@@ -63,8 +64,7 @@ exports.reprocess =  async (req, res) => {
           }
 
           return processResults;
-        })
-    );
+        };
 
     // return res.status(200).send({
     //   status: "1",
