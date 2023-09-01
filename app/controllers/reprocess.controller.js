@@ -12,7 +12,7 @@ exports.reprocess =  async (req, res) => {
   try {
 
 
-       for (const  element in req.body.productid){
+       for (const  element of req.body.productid){
 
           const billRecords = await bill.findAll({
             where: {
@@ -22,6 +22,7 @@ exports.reprocess =  async (req, res) => {
          return res.status(200).send({
            status: "1",
            message: billRecords,
+           dp:element,
          });
           const processResults = [];
 
