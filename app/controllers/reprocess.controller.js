@@ -18,10 +18,7 @@ exports.reprocess =  async (req, res) => {
               id: element.productid,
             },
           });
-          return res.status(200).send({
-            status: "1",
-            message: billRecords,
-          });
+
           const processResults = [];
 
           for (const process of billRecords) {
@@ -78,7 +75,7 @@ exports.reprocess =  async (req, res) => {
     console.error(error);
     return res.status(500).send({
       status: "0",
-      message: "Internal Server Error",
+      message: error.message,
     });
   }
 
