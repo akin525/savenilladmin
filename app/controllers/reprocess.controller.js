@@ -30,9 +30,9 @@ exports.reprocess =  async (req, res) => {
 
             const options = {
               method: 'POST',
-              url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
+              url: 'https://integration.mcd.5starcompany.com.ng/api/reseller/pay',
               headers: {
-                'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a',
+                'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky',
               },
               formData: {
                 'service': 'data',
