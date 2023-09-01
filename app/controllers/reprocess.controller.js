@@ -27,12 +27,15 @@ exports.reprocess =  async (req, res) => {
                 plan: process.plan,
               },
             });
-
+            return res.status(200).send({
+              status: "1",
+              message: products,
+            });
             const options = {
               method: 'POST',
-              url: 'https://integration.mcd.5starcompany.com.ng/api/reseller/pay',
+              url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
               headers: {
-                'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky',
+                'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a',
               },
               formData: {
                 'service': 'data',
@@ -102,10 +105,7 @@ exports. marksuccess=  async (req, res) => {
       }
     }
 
-    return res.status(200).send({
-      status: "1",
-      message: "Transaction Marked Successful",
-    });
+
   } catch (error) {
     console.error(error);
     return res.status(500).send({
