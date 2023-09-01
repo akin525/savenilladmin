@@ -44,7 +44,7 @@ exports.reprocess =  async (req, res) => {
 
             try {
               const response = await request(options);
-              const data = JSON.parse(response);
+              const data = JSON.parse(response.body);
 
               if (data.success === 1) {
                 processResults.push({
