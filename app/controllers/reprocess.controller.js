@@ -12,7 +12,7 @@ exports.reprocess =  async (req, res) => {
   try {
 
 
-       for (const  element of req.body){
+       for (const  element of req.body.productid){
 
           const billRecords = await bill.findAll({
             where: {
