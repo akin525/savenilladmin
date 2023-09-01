@@ -70,6 +70,7 @@ exports.reprocess =  async (req, res) => {
       status: "1",
       message: billRecords,
       bod:req.body.productid,
+      elet:elements,
     });
 
 
