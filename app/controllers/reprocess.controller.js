@@ -22,7 +22,8 @@ exports.reprocess =  async (req, res) => {
          return res.status(200).send({
            status: "1",
            message: billRecords,
-           dp:element,
+           dp:element
+           bod:req.body.productid,
          });
           const processResults = [];
 
