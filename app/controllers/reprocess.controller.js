@@ -11,7 +11,7 @@ const {where} = require("sequelize");
 exports.reprocess =  async (req, res) => {
   try {
 
-
+    const element=[];
        for (const  element of req.body.productid){
 
           const billRecords = await bill.findAll({
@@ -25,50 +25,50 @@ exports.reprocess =  async (req, res) => {
            dp:element,
            bod:req.body.productid,
          });
-          const processResults = [];
-
-          for (const process of billRecords) {
-            const products = await product.findAll({
-              where: {
-                plan: process.plan,
-              },
-            });
-
-            const options = {
-              method: 'POST',
-              url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
-              headers: {
-                'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a',
-              },
-              formData: {
-                'service': 'data',
-                'coded': products[0].plan_id, // Assuming you want the first product's plan_id
-                'phone': process.phone,
-              },
-            };
-
-            try {
-              const response = await request(options);
-              const data = JSON.parse(response);
-
-              if (data.success === 1) {
-                processResults.push({
-                  status: "1",
-                  message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
-                  server_res: response,
-                });
-              } else if (data.success === 0) {
-                processResults.push({
-                  status: "0",
-                  message: data.message,
-                });
-              }
-            } catch (error) {
-              console.error(error);
-            }
-          }
-
-          return processResults;
+          // const processResults = [];
+          //
+          // for (const process of billRecords) {
+          //   const products = await product.findAll({
+          //     where: {
+          //       plan: process.plan,
+          //     },
+          //   });
+          //
+          //   const options = {
+          //     method: 'POST',
+          //     url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
+          //     headers: {
+          //       'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a',
+          //     },
+          //     formData: {
+          //       'service': 'data',
+          //       'coded': products[0].plan_id, // Assuming you want the first product's plan_id
+          //       'phone': process.phone,
+          //     },
+          //   };
+          //
+          //   try {
+          //     const response = await request(options);
+          //     const data = JSON.parse(response);
+          //
+          //     if (data.success === 1) {
+          //       processResults.push({
+          //         status: "1",
+          //         message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
+          //         server_res: response,
+          //       });
+          //     } else if (data.success === 0) {
+          //       processResults.push({
+          //         status: "0",
+          //         message: data.message,
+          //       });
+          //     }
+          //   } catch (error) {
+          //     console.error(error);
+          //   }
+          // }
+          //
+          // return processResults;
         };
 
 
