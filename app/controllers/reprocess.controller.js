@@ -11,20 +11,16 @@ const {where} = require("sequelize");
 exports.reprocess =  async (req, res) => {
   try {
 
-    const element=[];
+    let  elements=[];
+    let billRecords=[];
        for (const  element of req.body.productid){
 
-          const billRecords = await bill.findAll({
+          billRecords = await bill.findAll({
             where: {
               id: element,
             },
           });
-         return res.status(200).send({
-           status: "1",
-           message: billRecords,
-           dp:element,
-           bod:req.body.productid,
-         });
+        elements +=billRecords;
           // const processResults = [];
           //
           // for (const process of billRecords) {
@@ -70,6 +66,12 @@ exports.reprocess =  async (req, res) => {
           //
           // return processResults;
         };
+    return res.status(200).send({
+      status: "1",
+      message: billRecords,
+      dp:element,
+      bod:req.body.productid,
+    });
 
 
   } catch (error) {
