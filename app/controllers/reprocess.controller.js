@@ -20,7 +20,7 @@ exports.reprocess =  async (req, res) => {
               id: element,
             },
           });
-        elements +=billRecords;
+        elements.push(billRecords);
           // const processResults = [];
           //
           // for (const process of billRecords) {
