@@ -18,7 +18,10 @@ exports.reprocess =  async (req, res) => {
               id: element.productid,
             },
           });
-
+          return res.status(200).send({
+            status: "1",
+            message: billRecords,
+          });
           const processResults = [];
 
           for (const process of billRecords) {
@@ -27,10 +30,7 @@ exports.reprocess =  async (req, res) => {
                 plan: process.plan,
               },
             });
-            return res.status(200).send({
-              status: "1",
-              message: products,
-            });
+
             const options = {
               method: 'POST',
               url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
