@@ -9,10 +9,79 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.reprocess = async (req, res) => {
+  // try {
+  //   const processResults = [];
+  //
+  //   for (const element of req.body.productid) {
+  //     const billRecords = await bill.findAll({
+  //       where: {
+  //         id: element,
+  //       },
+  //     });
+  //
+  //     for (const process of billRecords) {
+  //       const products = await product.findAll({
+  //         where: {
+  //           plan: process.plan,
+  //         },
+  //       });
+  //
+  //       var options = {
+  //         'method': 'POST',
+  //         'url': 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
+  //         'headers': {
+  //           'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+  //         },
+  //         formData: {
+  //           'service': 'data',
+  //           'coded': products[0].plan_id, // Assuming you want the first product's plan_id
+  //           'phone': process.phone,
+  //         },
+  //       };
+  //
+  //      await request(options, function (error, response) {
+  //         const data1 = JSON.parse(response.body);
+  //
+  //         if (data1.success === 1) {
+  //           processResults.push({
+  //             status: "1",
+  //             message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
+  //             server_res: response,
+  //           });
+  //         } else if (data1.success === 0) {
+  //           processResults.push({
+  //             status: "0",
+  //             message: data1.message,
+  //           });
+  //         }
+  //       });
+  //     }
+  //   }
+  //
+  //   return res.status(200).send({
+  //     status: "1",
+  //     message: processResults,
+  //   });
+  //
+  // } catch (error) {
+  //   console.error(error);
+  //   return res.status(200).send({
+  //     status: "0",
+  //     message: error.message,
+  //   });
+  // }
+
+
+
+  const axios = require('axios');
+
   try {
     const processResults = [];
 
-    for (const element of req.body.productid) {
+    const productIds = req.body.productid; // Assuming productid is an array
+
+    // Use Promise.all to parallelize requests
+    await Promise.all(productIds.map(async (element) => {
       const billRecords = await bill.findAll({
         where: {
           id: element,
@@ -26,50 +95,57 @@ exports.reprocess = async (req, res) => {
           },
         });
 
-        var options = {
-          'method': 'POST',
-          'url': 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
-          'headers': {
-            'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+        const options = {
+          method: 'POST',
+          url: 'https://test.mcd.5starcompany.com.ng/api/reseller/pay',
+          headers: {
+            'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a',
           },
-          formData: {
-            'service': 'data',
-            'coded': products[0].plan_id, // Assuming you want the first product's plan_id
-            'phone': process.phone,
+          data: {
+            service: 'data',
+            coded: products[0].plan_id, // Assuming you want the first product's plan_id
+            phone: process.phone,
           },
         };
 
-        request(options, function (error, response) {
-          const data1 = JSON.parse(response.body);
+        try {
+          const response = await axios(options);
+          const data1 = response.data;
 
           if (data1.success === 1) {
             processResults.push({
-              status: "1",
+              status: '1',
               message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
-              server_res: response,
+              server_res: response.data,
             });
           } else if (data1.success === 0) {
             processResults.push({
-              status: "0",
+              status: '0',
               message: data1.message,
             });
           }
-        });
+        } catch (error) {
+          console.error(error);
+          processResults.push({
+            status: '0',
+            message: error.message,
+          });
+        }
       }
-    }
+    }));
 
     return res.status(200).send({
-      status: "1",
+      status: '1',
       message: processResults,
     });
-
   } catch (error) {
     console.error(error);
     return res.status(200).send({
-      status: "0",
+      status: '0',
       message: error.message,
     });
   }
+
 };
 exports. marksuccess=  async (req, res) => {
   try {
