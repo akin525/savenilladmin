@@ -97,6 +97,10 @@ exports. marksuccess=  async (req, res) => {
           id: element.productid,
         },
       });
+      return res.status(500).send({
+        status: "0",
+        message: process,
+      });
 
       if (process) {
         // Update the 'result' field for the found 'Bill' record
@@ -116,7 +120,7 @@ exports. marksuccess=  async (req, res) => {
     console.error(error);
     return res.status(500).send({
       status: "0",
-      message: "Internal Server Error",
+      message: error.message,
     });
   }
 
