@@ -97,10 +97,7 @@ exports. marksuccess=  async (req, res) => {
           id: element,
         },
       });
-      return res.status(500).send({
-        status: "0",
-        message: process,
-      });
+
 
       if (process) {
         // Update the 'result' field for the found 'Bill' record
