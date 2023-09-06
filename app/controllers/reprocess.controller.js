@@ -91,10 +91,10 @@ exports.reprocess = async (req, res) => {
 };
 exports. marksuccess=  async (req, res) => {
   try {
-    for (const element of req.body) {
+    for (const element of req.body.productid) {
       const process = await bill.findOne({
         where: {
-          id: element.productid,
+          id: element,
         },
       });
       return res.status(500).send({
