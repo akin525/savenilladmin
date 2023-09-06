@@ -90,9 +90,12 @@ exports.reprocess = async (req, res) => {
 
 };
 exports. marksuccess=  async (req, res) => {
+
+  const processResults = [];
+
   try {
     for (const element of req.body.productid) {
-      const process = await bill.findOne({
+      const process = await bill.findAll({
         where: {
           id: element,
         },
@@ -101,16 +104,27 @@ exports. marksuccess=  async (req, res) => {
 
       if (process) {
         // Update the 'result' field for the found 'Bill' record
-        await bill.update(
-            { result: "1" },
-            {
-              where: {
-                id: process.id,
-              },
-            }
-        );
+        for (const pro of process) {
+          await bill.update(
+              {result: "1"},
+              {
+                where: {
+                  id: process.id,
+                },
+              }
+          );
+          processResults.push({
+            status: '1',
+            message: `Product mark successful`,
+          });
+        }
       }
+
     }
+    return res.status(200).send({
+      status: '1',
+      message: processResults,
+    });
 
 
   } catch (error) {
