@@ -102,7 +102,7 @@ exports. marksuccess=  async (req, res) => {
       });
 
 
-      if (process) {
+
         // Update the 'result' field for the found 'Bill' record
         for (const pro of process) {
           await bill.update(
@@ -118,7 +118,7 @@ exports. marksuccess=  async (req, res) => {
             message: `Product mark successful`,
           });
         }
-      }
+
 
     }
     return res.status(200).send({
