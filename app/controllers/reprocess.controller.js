@@ -101,32 +101,26 @@ exports. marksuccess=  async (req, res) => {
         },
       });
 
-
-
-        // Update the 'result' field for the found 'Bill' record
-        for (const pro of process) {
-          await bill.update(
-              {result: "1"},
-              {
-                where: {
-                  id: process.id,
-                },
-              }
-          );
-          processResults.push({
-            status: '1',
-            message: `Product mark successful`,
-          });
-        }
-
-
+      // Update the 'result' field for the found 'Bill' records
+      for (const pro of process) {
+        await bill.update(
+            { result: "1" },
+            {
+              where: {
+                id: pro.id, // Use 'pro.id' instead of 'process.id'
+              },
+            }
+        );
+        processResults.push({
+          status: '1',
+          message: `Product mark successful`,
+        });
+      }
     }
     return res.status(200).send({
       status: '1',
       message: processResults,
     });
-
-
   } catch (error) {
     console.error(error);
     return res.status(500).send({
@@ -134,5 +128,4 @@ exports. marksuccess=  async (req, res) => {
       message: error.message,
     });
   }
-
 };
