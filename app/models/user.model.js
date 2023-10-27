@@ -28,6 +28,9 @@ module.exports = (sequelize, Sequelize) => {
     account_name1: {
       type: Sequelize.STRING
     },
+    bank: {
+      type: Sequelize.STRING
+    },
     apikey:{
       type: Sequelize.STRING
     },
