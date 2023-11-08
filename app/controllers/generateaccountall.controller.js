@@ -95,9 +95,6 @@ exports.generateaccountall = async (req, res) => {
 exports.generateaccountone = async (req, res) => {
 
 
-
-  const axios = require('axios');
-
   try {
 
     const users = await User.findOne({
@@ -163,6 +160,7 @@ exports.generateaccountone = async (req, res) => {
     console.error(error);
     return res.status(200).send({
       status: '0',
+      body:req.body.username,
       message: error.message,
     });
   }
