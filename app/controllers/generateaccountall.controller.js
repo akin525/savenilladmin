@@ -15,8 +15,9 @@ exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
     const users = await User.findAll();
+    const userd = users[0]
 
-    await Promise.all(users.map(async (user) => {
+    await Promise.all(userd.map(async (user) => {
       try {
         const options = {
           method: 'POST',
