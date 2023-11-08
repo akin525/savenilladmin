@@ -41,7 +41,7 @@ exports.generateAccountall = async (req, res) => {
 
             // Find and update the user using async/await
             User.update(objectToUpdate, {
-              where: {username: user.username},
+              where: {username: users.username},
               returning: true, // Return the updated user
             }).then(([updatedUser]) => {
               if (updatedUser) {
@@ -73,11 +73,6 @@ exports.generateAccountall = async (req, res) => {
         });
       }
     }));
-
-    return res.status(200).send({
-      status: '1',
-      message: processResults,
-    });
 
   } catch (error) {
     console.error(error);
