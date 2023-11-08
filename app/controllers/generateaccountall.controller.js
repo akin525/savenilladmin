@@ -17,7 +17,7 @@ exports.generateAccountall = async (req, res) => {
     const user = await User.findAll();
     const userd = [user[0]];
 
-    await Promise.all(userd.map(async (users) => {
+    // await Promise.all(userd.map(async (users) => {
       try {
         // Use Promise.all to parallelize requests
         var options =  {
@@ -27,13 +27,13 @@ exports.generateAccountall = async (req, res) => {
             Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
           },
           formData:{
-            "firstname": users.username,
-            "lastname": users.name,
-            "address": users.address,
-            "gender": users.gender,
-            "email": users.email,
-            "phone": users.phone,
-            "dob": users.dob,
+            "firstname": userd.username,
+            "lastname": userd.name,
+            "address": userd.address,
+            "gender": userd.gender,
+            "email": userd.email,
+            "phone": userd.phone,
+            "dob": userd.dob,
             "provider": "safehaven"
           }
         };
@@ -74,7 +74,7 @@ exports.generateAccountall = async (req, res) => {
           message: error.message,
         });
       }
-    }));
+    // }));
 
     return res.status(200).send({
       status: '1',
