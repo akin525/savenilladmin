@@ -16,14 +16,14 @@ exports.generateAccountall = async (req, res) => {
     const processResults = [];
     const user = await User.findAll();
     const userd = [user[0]];
-    return res.status(200).send({
-      status: '0',
-      message: userd ,
-      ola: userd[0]['username'],
-      akin: userd[0].username,
-    });
-    // await Promise.all(userd.map(async (users) => {
+    await Promise.all(userd.map(async (users) => {
       try {
+        return res.status(200).send({
+          status: '0',
+          message: users ,
+          ola: users['username'],
+          akin: users.username,
+        });
         // Use Promise.all to parallelize requests
         var options =  {
           'method': 'POST',
@@ -79,7 +79,7 @@ exports.generateAccountall = async (req, res) => {
           message: error.message,
         });
       }
-    // }));
+    }));
 
     return res.status(200).send({
       status: '1',
