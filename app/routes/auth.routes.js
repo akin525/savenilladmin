@@ -33,7 +33,7 @@ const reversrefid=require("../controllers/reverseid.controller");
 const findpurchase=require("../controllers/findpu.controller");
 const MCD=require("../controllers/mcd.controller");
 const reprocess=require("../controllers/reprocess.controller");
-
+const account2=require("../controllers/generateaccountall.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -46,6 +46,7 @@ module.exports = function(app) {
     next();
   });
 
+  app.get("/api/auth/newaccount", account2.generateaccountall);
   app.post(
     "/api/auth/signup",
     [

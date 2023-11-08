@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const charges= sequelize.define("charps",{
+    return sequelize.define("charps", {
 
         username: {
-            type:Sequelize
+            type: Sequelize
         },
         payment_ref: {
             type: Sequelize
@@ -14,10 +14,10 @@ module.exports = (sequelize, Sequelize) => {
         iwallet: {
             type: Sequelize
         },
-        fwallet:{
+        fwallet: {
             type: sequelize
         },
-        description:{
+        description: {
             type: sequelize
         },
 
@@ -26,6 +26,4 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     });
-
-    return charges;
 };

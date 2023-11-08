@@ -1,13 +1,11 @@
 module.exports = (sequelize, Sequelize) => {
-    const settings= sequelize.define("settings",{
+    return sequelize.define("settings", {
         email: {
             type: Sequelize
         },
-        charges:{
+        charges: {
             type: Sequelize
         },
 
     });
-
-    return settings;
 };

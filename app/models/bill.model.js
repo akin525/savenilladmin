@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const bill = sequelize.define("bos", {
+    return sequelize.define("bos", {
 
         username: {
             type: Sequelize.STRING
@@ -22,14 +22,12 @@ module.exports = (sequelize, Sequelize) => {
         date: {
             type: Sequelize.STRING
         },
-        server_res:{
+        server_res: {
             type: Sequelize.STRING
         },
-        token:{
+        token: {
             type: Sequelize.STRING
         },
 
     });
-
-    return bill;
 };

@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const data = sequelize.define("data",{
+    return sequelize.define("data", {
         plan_id: {
             type: Sequelize.STRING
         },
@@ -25,5 +25,4 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
     });
-    return data;
 };

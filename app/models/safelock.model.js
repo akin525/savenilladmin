@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const safelock = sequelize.define("safe_locks", {
+    return sequelize.define("safe_locks", {
 
         username: {
             type: Sequelize.STRING
@@ -24,6 +24,4 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     });
-
-    return safelock;
 };

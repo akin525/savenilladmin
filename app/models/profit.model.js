@@ -1,9 +1,9 @@
 module.exports = (sequelize, Sequelize) => {
 
-    const profit= sequelize.define("profits",{
+    return sequelize.define("profits", {
 
         username: {
-            type:Sequelize
+            type: Sequelize
         },
         amount: {
             type: Sequelize
@@ -12,6 +12,4 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize
         },
     });
-
-    return profit;
 };

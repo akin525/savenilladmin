@@ -1,15 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const message = sequelize.define("messages",{
+    return sequelize.define("messages", {
 
         message: {
-            type:Sequelize
+            type: Sequelize
         },
-        status:{
-            type:Sequelize
+        status: {
+            type: Sequelize
         },
 
 
     });
-
-    return message;
 };
