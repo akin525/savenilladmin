@@ -34,7 +34,7 @@ exports.generateAccountall = async (req, res) => {
           const data1 = JSON.parse(response.body);
           console.log(data1.success);
           console.log(data1);
-          if (data1.success === true) { // Use boolean comparison instead of a string
+          if (data1.success === "true") { // Use boolean comparison instead of a string
             const objectToUpdate = {
               account_number: data1.data.account_number,
               account_name: data1.data.account_name,
