@@ -19,28 +19,10 @@ exports.generateAccountall = async (req, res) => {
     await Promise.all(userd.map(async (users) => {
       try {
         // Use Promise.all to parallelize requests
-        var options =  {
-          'method': 'POST',
-          'url': 'https://api.paylony.com/api/v1/create_account',
-          'headers': {
-            Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
-          },
-          formData:{
-            "firstname": users.username,
-            "lastname": users.name,
-            "address": users.address,
-            "gender": users.gender,
-            "email": users.email,
-            "phone": users.phone,
-            "dob": users.dob,
-            "provider": "safehaven"
-          }
-        };
 
+        var options = createApiOptions(users)
 
-
-
-         const response = await axios(options);
+        const response = await axios(options);
         
         return res.status(200).send({
           status: '0',
