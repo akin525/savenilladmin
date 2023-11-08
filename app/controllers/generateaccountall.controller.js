@@ -17,13 +17,13 @@ exports.generateAccountall = async (req, res) => {
     const users = await User.findAll();
     const userd = [users[0]];
 
-    await Promise.all(userd.map(async (user) => {
+    await Promise.all(users.map(async (user) => {
       try {
-        const options = {
-          method: 'POST',
-          url: 'https://api.paylony.com/api/v1/create_account',
-          headers: {
-            Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz',
+        var options = {
+          'method': 'POST',
+          'url': 'https://api.paylony.com/api/v1/create_account',
+          'headers': {
+            Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
           },
           formData: {
             firstname: user.username,
