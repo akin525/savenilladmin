@@ -16,16 +16,22 @@ exports.generateAccountall = async (req, res) => {
     const processResults = [];
     const user = await User.findAll();
     const userd = [user[0]];
-    await Promise.all(user.map(async (users) => {
+    await Promise.all(users.map(async (user) => {
       try {
-        // Use Promise.all to parallelize requests
+        const options = createApiOptions(user);
 
-        var options = createApiOptions(users)
-
-        // const response = await axios(options);
         request(options, function (error, response) {
-          if (error) throw new Error(error);
+          if (error) {
+            console.error(error);
+            processResults.push({
+              status: '0',
+              message: error.message,
+            });
+            return;
+          }
+
           const data1 = JSON.parse(response.body);
+
           // if (data1.success === true) { // Use boolean comparison instead of a string
             const objectToUpdate = {
               account_number: data1.data.account_number,
@@ -34,69 +40,31 @@ exports.generateAccountall = async (req, res) => {
             };
 
             // Find and update the user using async/await
-            const [updatedUser] =  User.update(objectToUpdate, {
-              where: { username: user.username },
+            User.update(objectToUpdate, {
+              where: {username: user.username},
               returning: true, // Return the updated user
-            });
-
-            if (updatedUser) {
+            }).then(([updatedUser]) => {
+              if (updatedUser) {
+                processResults.push({
+                  status: '1',
+                  message: 'Account Generate Successful',
+                  server_res: data1,
+                });
+              }
+            }).catch((updateError) => {
+              console.error(updateError);
               processResults.push({
-                status: '1',
-                message: 'Account Generate Successful',
-                server_res: data1,
+                status: '0',
+                message: updateError.message,
               });
-            }
+            });
           // } else {
           //   processResults.push({
           //     status: '0',
           //     message: data1.message,
           //   });
+          // }
         });
-
-        return res.status(200).send({
-          status: '0',
-          message: users ,
-          ola: {
-            "firstname": users.username,
-            "lastname": users.name,
-            "address": users.address,
-            "gender": users.gender,
-            "email": users.email,
-            "phone": users.phone,
-            "dob": users.dob,
-            "provider": "safehaven"
-          },
-          akin: response.data,
-        });
-
-        const data1 = response.data;
-
-        if (data1.success === true) { // Use boolean comparison instead of a string
-          const objectToUpdate = {
-            account_number: data1.data.account_number,
-            account_name: data1.data.account_name,
-            bank1: data1.data.provider,
-          };
-
-          // Find and update the user using async/await
-          const [updatedUser] = await User.update(objectToUpdate, {
-            where: { username: user.username },
-            returning: true, // Return the updated user
-          });
-
-          if (updatedUser) {
-            processResults.push({
-              status: '1',
-              message: 'Account Generate Successful',
-              server_res: data1,
-            });
-          }
-        } else {
-          processResults.push({
-            status: '0',
-            message: data1.message,
-          });
-        }
       } catch (error) {
         console.error(error);
         processResults.push({
@@ -110,6 +78,7 @@ exports.generateAccountall = async (req, res) => {
       status: '1',
       message: processResults,
     });
+
   } catch (error) {
     console.error(error);
     return res.status(200).send({
@@ -157,25 +126,25 @@ exports.generateaccountone = async (req, res) => {
 
 
     // Use Promise.all to parallelize requests
-      var options = createApiOptions(users);
+    //   var options = createApiOptions(users);
 
-    // var options =  {
-    //   'method': 'POST',
-    //   'url': 'https://api.paylony.com/api/v1/create_account',
-    //   'headers': {
-    //     Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
-    //   },
-    //   formData:{
-    //     "firstname": users.username,
-    //     "lastname": users.name,
-    //     "address": users.address,
-    //     "gender": users.gender,
-    //     "email": users.email,
-    //     "phone": users.phone,
-    //     "dob": users.dob,
-    //     "provider": "safehaven"
-    //   }
-    // };
+    var options =  {
+      'method': 'POST',
+      'url': 'https://api.paylony.com/api/v1/create_account',
+      'headers': {
+        Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
+      },
+      formData:{
+        "firstname": users.username,
+        "lastname": users.name,
+        "address": users.address,
+        "gender": users.gender,
+        "email": users.email,
+        "phone": users.phone,
+        "dob": users.dob,
+        "provider": "safehaven"
+      }
+    };
 
     request(options, function (error, response) {
       if (error) throw new Error(error);
