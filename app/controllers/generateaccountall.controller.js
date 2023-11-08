@@ -28,16 +28,8 @@ exports.generateaccountall = async (req, res) => {
         'headers': {
           Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
         },
-        body: JSON.stringify({
-          "firstname": element.username, // Assuming 'element.username' is a variable
-          "lastname": element.name,
-          "address": element.address,
-          "gender": element.gender,
-          "email": element.email,
-          "phone": element.phone,
-          "dob": element.dob,
-          "provider": "safehaven"
-        })
+        body: '{\n    "firstname":"'+element.username+'",\n    "lastname":"'+element.name+'",\n    "address":"'+element.address+'",\n    "gender":"'+element.gender+'",\n    "email":"'+element.email+'",\n    "phone":"'+element.phone+'",\n    "dob":"'+element.dob+'",\n    "provider":"safehaven"\n}'
+
       };
 
 
@@ -114,17 +106,8 @@ exports.generateaccountone = async (req, res) => {
         'headers': {
           Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
         },
-        body: JSON.stringify({
-          "firstname": users.username, // Assuming 'element.username' is a variable
-          "lastname": users.name,
-          "address": users.address,
-          "gender": users.gender,
-          "email": users.email,
-          "phone": users.phone,
-          "dob": users.dob,
-          "bvn": "",
-          "provider": "safehaven"
-        })
+        body: '{\n    "firstname":"'+users.username+'",\n    "lastname":"'+users.name+'",\n    "address":"'+users.address+'",\n    "gender":"'+users.gender+'",\n    "email":"'+users.email+'",\n    "phone":"'+users.phone+'",\n    "dob":"'+users.dob+'",\n    "provider":"safehaven"\n}'
+
       };
 
     request(options, function (error, response) {
