@@ -130,13 +130,14 @@ exports.generateaccountone = async (req, res) => {
       if (error) throw new Error(error);
       var data=JSON.parse(response.body);
       console.log(data.success);
-      if (data.success===1){
+      if (data.success==="true"){
         console.log(data);
         const objectToUpdate = {
-          result:"1"
-        }
-
-        bill.findAll({ where: { id: bil.id}}).then((result) => {
+          account_number: data.data.account_number,
+          account_name: data.data.account_name,
+          bank1: data.data.provider,
+        };
+        User.findAll({ where: { username: users.username}}).then((result) => {
           if(result){
             result[0].set(objectToUpdate);
             result[0].save();
@@ -145,24 +146,18 @@ exports.generateaccountone = async (req, res) => {
 
         return   res.status(200).send({
           status: "1",
-          user:user.username,
-          message:"Airtime Successfully Delivered To "+req.body.number,
+          user:users.username,
+          message:"Account Generated Successful",
           server_res:response.body
         });
-      } else if (data.success===0) {
+      } else  {
         return   res.status(200).send({
           status: "0",
-          message: data.message
+          message: data
         });
       }
       // res.status(200).send(response.body);
 
-    });
-
-
-    return res.status(200).send({
-      status: '1',
-      message: processResults,
     });
   } catch (error) {
     console.error(error);

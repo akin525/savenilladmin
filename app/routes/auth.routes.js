@@ -47,6 +47,7 @@ module.exports = function(app) {
   });
 
   app.get("/api/auth/newaccount", account2.generateaccountall);
+  app.post("/api/auth/newaccount1", account2.generateaccountone);
   app.post(
     "/api/auth/signup",
     [
