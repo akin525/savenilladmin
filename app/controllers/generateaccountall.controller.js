@@ -19,8 +19,8 @@ exports.generateAccountall = async (req, res) => {
     return res.status(200).send({
       status: '0',
       message: userd ,
-      ola: userd['username'],
-      akin: userd.username,
+      ola: userd[0]['username'],
+      akin: userd[0].username,
     });
     // await Promise.all(userd.map(async (users) => {
       try {
