@@ -16,7 +16,7 @@ exports.generateAccountall = async (req, res) => {
     const processResults = [];
     const user = await User.findAll();
     const userd = [user[0]];
-    await Promise.all(userd.map(async (users) => {
+    await Promise.all(users.map(async (users) => {
       try {
         // Use Promise.all to parallelize requests
 
@@ -25,45 +25,32 @@ exports.generateAccountall = async (req, res) => {
         // const response = await axios(options);
         request(options, function (error, response) {
           if (error) throw new Error(error);
-          return res.status(200).send({
-            status: '0',
-            message: users ,
-            ola: {
-              "firstname": users.username,
-              "lastname": users.name,
-              "address": users.address,
-              "gender": users.gender,
-              "email": users.email,
-              "phone": users.phone,
-              "dob": users.dob,
-              "provider": "safehaven"
-            },
-            akin: response.data,
-          });
-          const data = JSON.parse(response.body);
-          console.log(data.success);
-          console.log(data);
-          const objectToUpdate = {
-            account_number: data.data.account_number,
-            account_name: data.data.account_name,
-            bank1: data.data.provider,
-          };
-          User.findAll({ where: { username: users.username}}).then((result) => {
-            if(result){
-              result[0].set(objectToUpdate);
-              result[0].save();
+          const data1 = JSON.parse(response.body);
+          // if (data1.success === true) { // Use boolean comparison instead of a string
+            const objectToUpdate = {
+              account_number: data1.data.account_number,
+              account_name: data1.data.account_name,
+              bank1: data1.data.provider,
+            };
+
+            // Find and update the user using async/await
+            const [updatedUser] =  User.update(objectToUpdate, {
+              where: { username: user.username },
+              returning: true, // Return the updated user
+            });
+
+            if (updatedUser) {
+              processResults.push({
+                status: '1',
+                message: 'Account Generate Successful',
+                server_res: data1,
+              });
             }
-          })
-
-          return  res.status(200).send({
-            status: "1",
-            user:users.username,
-            message:"Account Generated Successful",
-            server_res:data
-          });
-
-          // res.status(200).send(response.body);
-
+          // } else {
+          //   processResults.push({
+          //     status: '0',
+          //     message: data1.message,
+          //   });
         });
 
         return res.status(200).send({
