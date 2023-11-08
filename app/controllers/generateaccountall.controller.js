@@ -14,11 +14,11 @@ const axios = require('axios');
 exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
-    const user = await User.findAll();
-    const userd = [user[0]];
-    await Promise.all(user.map(async (users) => {
+    const users = await User.findAll();
+
+    await Promise.all(users.map(async (user) => {
       try {
-        const options = createApiOptions(users);
+        const options = createApiOptions(user);
 
         request(options, function (error, response) {
           if (error) {
@@ -32,27 +32,25 @@ exports.generateAccountall = async (req, res) => {
 
           const data1 = JSON.parse(response.body);
 
-          // if (data1.success === true) { // Use boolean comparison instead of a string
+          if (data1.success === true) { // Use boolean comparison instead of a string
             const objectToUpdate = {
               account_number: data1.data.account_number,
               account_name: data1.data.account_name,
               bank1: data1.data.provider,
             };
-          User.findAll({ where: { username: users.username}}).then((result) => {
-            if(result){
-              result[0].set(objectToUpdate);
-              result[0].save();
-            }
-          }).then(([updatedUser]) => {
-            if (updatedUser) {
-              processResults.push({
-                status: '1',
-                message: 'Account Generate Successful',
-                server_res: data1,
-              });
-            }
-            // Find and update the user using async/await
 
+            // Find and update the user using async/await
+            User.update(objectToUpdate, {
+              where: { username: user.username },
+              returning: true, // Return the updated user
+            }).then(([updatedUser]) => {
+              if (updatedUser) {
+                processResults.push({
+                  status: '1',
+                  message: 'Account Generate Successful',
+                  server_res: data1,
+                });
+              }
             }).catch((updateError) => {
               console.error(updateError);
               processResults.push({
@@ -60,12 +58,12 @@ exports.generateAccountall = async (req, res) => {
                 message: updateError.message,
               });
             });
-          // } else {
-          //   processResults.push({
-          //     status: '0',
-          //     message: data1.message,
-          //   });
-          // }
+          } else {
+            processResults.push({
+              status: '0',
+              message: data1.message,
+            });
+          }
         });
       } catch (error) {
         console.error(error);
@@ -85,26 +83,25 @@ exports.generateAccountall = async (req, res) => {
   }
 };
 
-function createApiOptions(users) {
-  // Use Promise.all to parallelize requests
-  var options =  {
-    'method': 'POST',
-    'url': 'https://api.paylony.com/api/v1/create_account',
-    'headers': {
-      Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
+function createApiOptions(user) {
+  var options = {
+    method: 'POST',
+    url: 'https://api.paylony.com/api/v1/create_account',
+    headers: {
+      Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz',
     },
-    formData:{
-      "firstname": users.username,
-      "lastname": users.name,
-      "address": users.address,
-      "gender": users.gender,
-      "email": users.email,
-      "phone": users.phone,
-      "dob": users.dob,
-      "provider": "safehaven"
+    formData: {
+      "firstname": user.username,
+      "lastname": user.name,
+      "address": user.address,
+      "gender": user.gender,
+      "email": user.email,
+      "phone": user.phone,
+      "dob": user.dob,
+      "provider": "safehaven",
     }
   };
-  return options
+  return options;
 }
 
 exports.generateaccountone = async (req, res) => {
