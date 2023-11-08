@@ -16,7 +16,10 @@ exports.generateAccountall = async (req, res) => {
     const processResults = [];
     const user = await User.findAll();
     const userd = [user[0]];
-
+    return res.status(200).send({
+      status: '0',
+      message: userd,
+    });
     // await Promise.all(userd.map(async (users) => {
       try {
         // Use Promise.all to parallelize requests
