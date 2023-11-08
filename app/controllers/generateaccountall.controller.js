@@ -1,3 +1,4 @@
+const db = require("../models");
 const User = db.user;
 const safe =db.safelock;
 const deposit=db.deposit;
