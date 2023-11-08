@@ -1,4 +1,3 @@
-const db = require("../models");
 const User = db.user;
 const safe =db.safelock;
 const deposit=db.deposit;
@@ -37,7 +36,33 @@ exports.generateAccountall = async (req, res) => {
           }
         };
 
-        const response = await axios(options);
+
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          const data = JSON.parse(response.body);
+          console.log(data.success);
+          console.log(data);
+
+          return res.status(200).send({
+            status: '0',
+            message: users ,
+            ola: {
+              "firstname": users.username,
+              "lastname": users.name,
+              "address": users.address,
+              "gender": users.gender,
+              "email": users.email,
+              "phone": users.phone,
+              "dob": users.dob,
+              "provider": "safehaven"
+            },
+            akin: response.data,
+          });
+
+        });
+
+        // const response = await axios(options);
+        
         return res.status(200).send({
           status: '0',
           message: users ,
@@ -53,6 +78,7 @@ exports.generateAccountall = async (req, res) => {
           },
           akin: response.data,
         });
+
         const data1 = response.data;
 
         if (data1.success === true) { // Use boolean comparison instead of a string
