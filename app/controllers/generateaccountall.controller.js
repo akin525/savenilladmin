@@ -11,7 +11,7 @@ const {where} = require("sequelize");
 const axios = require('axios');
 // const User = require('./User'); // Make sure to import the User model from the correct path
 
-exports.generateAccountAll = async (req, res) => {
+exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
     const users = await User.findAll();
