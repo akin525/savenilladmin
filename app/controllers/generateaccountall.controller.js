@@ -129,7 +129,7 @@ exports.generateAccountall = async (req, res) => {
   }
 };
 
-tolulope = async (users)=>{
+function createApiOptions(users) {
   // Use Promise.all to parallelize requests
   var options =  {
     'method': 'POST',
@@ -167,7 +167,7 @@ exports.generateaccountone = async (req, res) => {
 
 
     // Use Promise.all to parallelize requests
-      var options = tolulope(users);
+      var options = createApiOptions(users);
 
     request(options, function (error, response) {
       if (error) throw new Error(error);
