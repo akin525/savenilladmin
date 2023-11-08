@@ -20,7 +20,9 @@ exports.generateaccountall = async (req, res) => {
     const users = await User.findAll(); // Assuming productid is an array
 
     // Use Promise.all to parallelize requests
-      for (const element of users) {
+    await Promise.all(users.map(async (element1) => {
+
+      for (const element of element1) {
         var options = {
           'method': 'POST',
           'url': 'https://api.paylony.com/api/v1/create_account',
@@ -76,6 +78,7 @@ exports.generateaccountall = async (req, res) => {
         }
       }
 
+    }));
 
     return res.status(200).send({
       status: '1',
