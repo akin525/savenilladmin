@@ -22,7 +22,7 @@ exports.generateAccountall = async (req, res) => {
 
         var options = createApiOptions(users)
 
-        const response = await axios(options);
+        // const response = await axios(options);
         
         return res.status(200).send({
           status: '0',
