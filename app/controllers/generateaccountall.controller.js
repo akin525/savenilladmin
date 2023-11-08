@@ -106,10 +106,7 @@ exports.generateaccountone = async (req, res) => {
       },
     }); // Assuming productid is an array
 
-    return res.status(200).send({
-      status: '1',
-      message: users,
-    });
+
     // Use Promise.all to parallelize requests
       var options = {
         'method': 'POST',
