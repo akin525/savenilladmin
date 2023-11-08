@@ -123,7 +123,6 @@ exports.generateaccountone = async (req, res) => {
          "phone": users.phone,
          "dob": users.dob,
          "provider": "safehaven"
-
        }
       };
 
@@ -131,7 +130,6 @@ exports.generateaccountone = async (req, res) => {
       if (error) throw new Error(error);
       const data = JSON.parse(response.body);
       console.log(data.success);
-      if (data.success=="true"){
         console.log(data);
         const objectToUpdate = {
           account_number: data.data.account_number,
@@ -145,18 +143,13 @@ exports.generateaccountone = async (req, res) => {
           }
         })
 
-        return   res.status(200).send({
+        return  res.status(200).send({
           status: "1",
           user:users.username,
           message:"Account Generated Successful",
           server_res:data
         });
-      } else  {
-        return   res.status(200).send({
-          status: "0",
-          message: data
-        });
-      }
+
       // res.status(200).send(response.body);
 
     });
