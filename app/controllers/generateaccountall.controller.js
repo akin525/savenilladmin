@@ -16,14 +16,8 @@ exports.generateAccountall = async (req, res) => {
     const processResults = [];
     const user = await User.findAll();
     const userd = [user[0]];
-    await Promise.all(user.map(async (users) => {
+    await Promise.all(userd.map(async (users) => {
       try {
-        return res.status(200).send({
-          status: '0',
-          message: users ,
-          ola: users['username'],
-          akin: users.username,
-        });
         // Use Promise.all to parallelize requests
         var options =  {
           'method': 'POST',
@@ -32,18 +26,33 @@ exports.generateAccountall = async (req, res) => {
             Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
           },
           formData:{
-            "firstname": userd.username,
-            "lastname": userd.name,
-            "address": userd.address,
-            "gender": userd.gender,
-            "email": userd.email,
-            "phone": userd.phone,
-            "dob": userd.dob,
+            "firstname": users.username,
+            "lastname": users.name,
+            "address": users.address,
+            "gender": users.gender,
+            "email": users.email,
+            "phone": users.phone,
+            "dob": users.dob,
             "provider": "safehaven"
           }
         };
 
         const response = await axios(options);
+        return res.status(200).send({
+          status: '0',
+          message: users ,
+          ola: {
+            "firstname": users.username,
+            "lastname": users.name,
+            "address": users.address,
+            "gender": users.gender,
+            "email": users.email,
+            "phone": users.phone,
+            "dob": users.dob,
+            "provider": "safehaven"
+          },
+          akin: response.data,
+        });
         const data1 = response.data;
 
         if (data1.success === true) { // Use boolean comparison instead of a string
