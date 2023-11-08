@@ -20,39 +20,38 @@ exports.generateaccountall = async (req, res) => {
     const users = await User.findAll(); // Assuming productid is an array
 
     // Use Promise.all to parallelize requests
-    await Promise.all(users.map(async (element) => {
-
-      var options = {
-        'method': 'POST',
-        'url': 'https://api.paylony.com/api/v1/create_account',
-        'headers': {
-          Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
-        },
-        formData:{
-          "firstname": element.username, // Assuming 'element.username' is a variable
-          "lastname": element.name,
-          "address": element.address,
-          "gender": element.gender,
-          "email": element.email,
-          "phone": element.phone,
-          "dob": element.dob,
-          "provider": "safehaven"
-        }
-      };
+      for (const element of users) {
+        var options = {
+          'method': 'POST',
+          'url': 'https://api.paylony.com/api/v1/create_account',
+          'headers': {
+            Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
+          },
+          formData: {
+            "firstname": element.username, // Assuming 'element.username' is a variable
+            "lastname": element.name,
+            "address": element.address,
+            "gender": element.gender,
+            "email": element.email,
+            "phone": element.phone,
+            "dob": element.dob,
+            "provider": "safehaven"
+          }
+        };
 
 
         try {
           const response = await axios(options);
           const data1 = JSON.parse(response.data);
 
-          if (data1.success === "true") {
+          // if (data1.success === "true") {
             const objectToUpdate = {
               account_number: data1.data.account_number,
               account_name: data1.data.account_name,
               bank1: data1.data.provider,
             };
-            User.findAll({ where: { username: element.username}}).then((result) => {
-              if(result){
+            User.findAll({where: {username: element.username}}).then((result) => {
+              if (result) {
                 result[0].set(objectToUpdate);
                 result[0].save();
               }
@@ -62,12 +61,12 @@ exports.generateaccountall = async (req, res) => {
               message: `Account Generate Successful`,
               server_res: response.data,
             });
-          } else  {
-            processResults.push({
-              status: '0',
-              message: data1.message,
-            });
-          }
+          // } else {
+          //   processResults.push({
+          //     status: '0',
+          //     message: data1.message,
+          //   });
+          // }
         } catch (error) {
           console.error(error);
           processResults.push({
@@ -75,8 +74,8 @@ exports.generateaccountall = async (req, res) => {
             message: error.message,
           });
         }
+      }
 
-    }));
 
     return res.status(200).send({
       status: '1',
