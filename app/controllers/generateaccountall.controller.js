@@ -38,19 +38,21 @@ exports.generateAccountall = async (req, res) => {
               account_name: data1.data.account_name,
               bank1: data1.data.provider,
             };
-
+          User.findAll({ where: { username: users.username}}).then((result) => {
+            if(result){
+              result[0].set(objectToUpdate);
+              result[0].save();
+            }
+          }).then(([updatedUser]) => {
+            if (updatedUser) {
+              processResults.push({
+                status: '1',
+                message: 'Account Generate Successful',
+                server_res: data1,
+              });
+            }
             // Find and update the user using async/await
-            User.update(objectToUpdate, {
-              where: {username: users.username},
-              returning: true, // Return the updated user
-            }).then(([updatedUser]) => {
-              if (updatedUser) {
-                processResults.push({
-                  status: '1',
-                  message: 'Account Generate Successful',
-                  server_res: data1,
-                });
-              }
+
             }).catch((updateError) => {
               console.error(updateError);
               processResults.push({
