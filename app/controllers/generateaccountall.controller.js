@@ -22,7 +22,7 @@ exports.generateaccountall = async (req, res) => {
     // Use Promise.all to parallelize requests
     await Promise.all(users.map(async (element1) => {
 
-      for (const element of element1) {
+      // for (const element of element1) {
         var options = {
           'method': 'POST',
           'url': 'https://api.paylony.com/api/v1/create_account',
@@ -76,7 +76,7 @@ exports.generateaccountall = async (req, res) => {
             message: error.message,
           });
         }
-      }
+      // }
 
     }));
 
