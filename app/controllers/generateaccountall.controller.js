@@ -20,7 +20,7 @@ exports.generateaccountall = async (req, res) => {
     const users = await User.findAll(); // Assuming productid is an array
 
     // Use Promise.all to parallelize requests
-    await Promise.all(users.map(async (element1) => {
+    await Promise.all(users.map(async (element) => {
 
       // for (const element of element1) {
         var options = {
