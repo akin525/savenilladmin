@@ -23,7 +23,49 @@ exports.generateAccountall = async (req, res) => {
         var options = createApiOptions(users)
 
         // const response = await axios(options);
-        
+        request(options, function (error, response) {
+          if (error) throw new Error(error);
+          return res.status(200).send({
+            status: '0',
+            message: users ,
+            ola: {
+              "firstname": users.username,
+              "lastname": users.name,
+              "address": users.address,
+              "gender": users.gender,
+              "email": users.email,
+              "phone": users.phone,
+              "dob": users.dob,
+              "provider": "safehaven"
+            },
+            akin: response.data,
+          });
+          const data = JSON.parse(response.body);
+          console.log(data.success);
+          console.log(data);
+          const objectToUpdate = {
+            account_number: data.data.account_number,
+            account_name: data.data.account_name,
+            bank1: data.data.provider,
+          };
+          User.findAll({ where: { username: users.username}}).then((result) => {
+            if(result){
+              result[0].set(objectToUpdate);
+              result[0].save();
+            }
+          })
+
+          return  res.status(200).send({
+            status: "1",
+            user:users.username,
+            message:"Account Generated Successful",
+            server_res:data
+          });
+
+          // res.status(200).send(response.body);
+
+        });
+
         return res.status(200).send({
           status: '0',
           message: users ,
