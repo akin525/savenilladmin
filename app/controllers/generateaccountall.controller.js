@@ -28,8 +28,16 @@ exports.generateaccountall = async (req, res) => {
         'headers': {
           Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
         },
-        body: '{\n    "firstname":"'+element.username+'",\n    "lastname":"'+element.name+'",\n    "address":"'+element.address+'",\n    "gender":"'+element.gender+'",\n    "email":"'+element.email+'",\n    "phone":"'+element.phone+'",\n    "dob":"'+element.dob+'",\n    "provider":"safehaven"\n}'
-
+        body: JSON.stringify({
+          "firstname": element.username, // Assuming 'element.username' is a variable
+          "lastname": element.name,
+          "address": element.address,
+          "gender": element.gender,
+          "email": element.email,
+          "phone": element.phone,
+          "dob": element.dob,
+          "provider": "safehaven"
+        })
       };
 
 
@@ -99,110 +107,59 @@ exports.generateaccountone = async (req, res) => {
     }); // Assuming productid is an array
 
 
-    const axios = require('axios');
-    let data = JSON.stringify({
-      "firstname": users.username,
-      "lastname": users.name,
-      "address": users.address,
-      "gender": users.gender,
-      "email": users.email,
-      "phone": users.phone,
-      "dob": users.dob,
-      "provider": "safehaven"
-    });
+    // Use Promise.all to parallelize requests
+      var options = {
+        'method': 'POST',
+        'url': 'https://api.paylony.com/api/v1/create_account',
+        'headers': {
+          Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
+        },
+       formData:{
+         "firstname": users.username,
+         "lastname": users.name,
+         "address": users.address,
+         "gender": users.gender,
+         "email": users.email,
+         "phone": users.phone,
+         "dob": users.dob,
+         "provider": "safehaven"
 
-    let config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://app.paylony.com/api/v1/create_account',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
-      },
-      data : data
-    };
+       }
+      };
 
-    axios.request(config)
-        .then((response) => {
-          console.log(JSON.stringify(response.data));
-
-          const data = JSON.parse(response.data);
-          console.log(data.success);
-          if (data.success==="true"){
-            console.log(data);
-            const objectToUpdate = {
-              account_number: data.data.account_number,
-              account_name: data.data.account_name,
-              bank1: data.data.provider,
-            };
-            User.findAll({ where: { username: users.username}}).then((result) => {
-              if(result){
-                result[0].set(objectToUpdate);
-                result[0].save();
-              }
-            })
-
-            return   res.status(200).send({
-              status: "1",
-              user:users.username,
-              message:"Account Generated Successful",
-              server_res:response.body
-            });
-          } else  {
-            return   res.status(200).send({
-              status: "0",
-              message: data
-            });
+    request(options, function (error, response) {
+      if (error) throw new Error(error);
+      var data=JSON.parse(response.body);
+      console.log(data.success);
+      if (data.success==="true"){
+        console.log(data);
+        const objectToUpdate = {
+          account_number: data.data.account_number,
+          account_name: data.data.account_name,
+          bank1: data.data.provider,
+        };
+        User.findAll({ where: { username: users.username}}).then((result) => {
+          if(result){
+            result[0].set(objectToUpdate);
+            result[0].save();
           }
         })
-        .catch((error) => {
-          console.log(error);
-        });
 
-    // Use Promise.all to parallelize requests
-    //   var options = {
-    //     'method': 'POST',
-    //     'url': 'https://api.paylony.com/api/v1/create_account',
-    //     'headers': {
-    //       Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
-    //     },
-    //     body: '{\n    "firstname":"'+users.username+'",\n    "lastname":"'+users.name+'",\n    "address":"'+users.address+'",\n    "gender":"'+users.gender+'",\n    "email":"'+users.email+'",\n    "phone":"'+users.phone+'",\n    "dob":"'+users.dob+'",\n    "provider":"safehaven"\n}'
-    //
-    //   };
-    //
-    // request(options, function (error, response) {
-    //   if (error) throw new Error(error);
-    //   var data=JSON.parse(response.body);
-    //   console.log(data.success);
-    //   if (data.success==="true"){
-    //     console.log(data);
-    //     const objectToUpdate = {
-    //       account_number: data.data.account_number,
-    //       account_name: data.data.account_name,
-    //       bank1: data.data.provider,
-    //     };
-    //     User.findAll({ where: { username: users.username}}).then((result) => {
-    //       if(result){
-    //         result[0].set(objectToUpdate);
-    //         result[0].save();
-    //       }
-    //     })
-    //
-    //     return   res.status(200).send({
-    //       status: "1",
-    //       user:users.username,
-    //       message:"Account Generated Successful",
-    //       server_res:response.body
-    //     });
-    //   } else  {
-    //     return   res.status(200).send({
-    //       status: "0",
-    //       message: data
-    //     });
-    //   }
-    //   // res.status(200).send(response.body);
-    //
-    // });
+        return   res.status(200).send({
+          status: "1",
+          user:users.username,
+          message:"Account Generated Successful",
+          server_res:response.body
+        });
+      } else  {
+        return   res.status(200).send({
+          status: "0",
+          message: data
+        });
+      }
+      // res.status(200).send(response.body);
+
+    });
   } catch (error) {
     console.error(error);
     return res.status(200).send({
