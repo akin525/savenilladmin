@@ -14,8 +14,9 @@ const axios = require('axios');
 exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
-    const users = await User.findAll();
+    const td = await User.findAll();
 
+    const users=td[0];
     await Promise.all(users.map(async (user) => {
       try {
         const options = createApiOptions(user);
