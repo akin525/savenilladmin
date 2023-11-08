@@ -14,7 +14,7 @@ const axios = require('axios');
 exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
-    const user = await User.findAll();
+    const users = await User.findAll();
     const userd = [user[0]];
     await Promise.all(users.map(async (user) => {
       try {
