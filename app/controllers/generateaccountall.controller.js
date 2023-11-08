@@ -14,11 +14,11 @@ const axios = require('axios');
 exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
-    const users = await User.findAll();
+    const user = await User.findAll();
     const userd = [user[0]];
-    await Promise.all(users.map(async (user) => {
+    await Promise.all(user.map(async (users) => {
       try {
-        const options = createApiOptions(user);
+        const options = createApiOptions(users);
 
         request(options, function (error, response) {
           if (error) {
