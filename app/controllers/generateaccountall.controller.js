@@ -131,7 +131,7 @@ exports.generateaccountone = async (req, res) => {
       if (error) throw new Error(error);
       var data=JSON.parse(response.body);
       console.log(data.success);
-      if (data.success==="true"){
+      if (data.success=="true"){
         console.log(data);
         const objectToUpdate = {
           account_number: data.data.account_number,
