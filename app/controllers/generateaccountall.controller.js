@@ -15,7 +15,7 @@ exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
     const users = await User.findAll();
-    const userd = users[0]
+    const userd = [users[0]];
 
     await Promise.all(userd.map(async (user) => {
       try {
