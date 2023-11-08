@@ -501,14 +501,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="Changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1699456237963">
+    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1699456784644">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1699456237963" />
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1699456240869">
+    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1699456784644" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2" timestamp="1699456787725">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1699456240869" />
+    <state x="275" y="89" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1699456787725" />
+    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1699456777925">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1699456777925" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1699451259400">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
