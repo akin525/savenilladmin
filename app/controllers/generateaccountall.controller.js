@@ -37,31 +37,9 @@ exports.generateAccountall = async (req, res) => {
         };
 
 
-        request(options, function (error, response) {
-          if (error) throw new Error(error);
-          const data = JSON.parse(response.body);
-          console.log(data.success);
-          console.log(data);
 
-          return res.status(200).send({
-            status: '0',
-            message: users ,
-            ola: {
-              "firstname": users.username,
-              "lastname": users.name,
-              "address": users.address,
-              "gender": users.gender,
-              "email": users.email,
-              "phone": users.phone,
-              "dob": users.dob,
-              "provider": "safehaven"
-            },
-            akin: response.data,
-          });
 
-        });
-
-        // const response = await axios(options);
+         const response = await axios(options);
         
         return res.status(200).send({
           status: '0',
