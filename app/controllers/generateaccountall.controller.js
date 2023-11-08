@@ -129,7 +129,7 @@ exports.generateaccountone = async (req, res) => {
 
     request(options, function (error, response) {
       if (error) throw new Error(error);
-      var data=JSON.parse(response.body);
+      const data = JSON.parse(response.body);
       console.log(data.success);
       if (data.success=="true"){
         console.log(data);
@@ -149,7 +149,7 @@ exports.generateaccountone = async (req, res) => {
           status: "1",
           user:users.username,
           message:"Account Generated Successful",
-          server_res:response.body
+          server_res:data
         });
       } else  {
         return   res.status(200).send({
