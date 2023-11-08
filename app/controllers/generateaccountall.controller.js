@@ -26,6 +26,7 @@ exports.generateaccountall = async (req, res) => {
         'method': 'POST',
         'url': 'https://api.paylony.com/api/v1/create_account',
         'headers': {
+          Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
         },
         body: JSON.stringify({
           "firstname": element.username, // Assuming 'element.username' is a variable
