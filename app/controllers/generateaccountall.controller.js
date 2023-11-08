@@ -93,7 +93,10 @@ exports.generateaccountall = async (req, res) => {
 };
 
 exports.generateaccountone = async (req, res) => {
-
+  return res.status(200).send({
+    status: '1',
+    message: req.body,
+  });
 
   try {
 
