@@ -34,6 +34,7 @@ const findpurchase=require("../controllers/findpu.controller");
 const MCD=require("../controllers/mcd.controller");
 const reprocess=require("../controllers/reprocess.controller");
 const account2=require("../controllers/generateaccountall.controller");
+const account3=require("../controllers/generateaccountall1.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -47,6 +48,8 @@ module.exports = function(app) {
   });
 
   app.get("/api/auth/newaccount", account2.generateAccountall);
+  app.get("/api/auth/newacc", account3.generateAccountall);
+  app.post("/api/auth/newacc1", account3.generateaccountone);
   app.post("/api/auth/newaccount1", account2.generateaccountone);
   app.post(
     "/api/auth/signup",

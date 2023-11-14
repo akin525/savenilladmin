@@ -22,16 +22,25 @@ module.exports = (sequelize, Sequelize) => {
     account_number1: {
       type: Sequelize.STRING
     },
+    account_number2: {
+      type: Sequelize.STRING
+    },
     account_name: {
       type: Sequelize.STRING
     },
     account_name1: {
       type: Sequelize.STRING
     },
+    account_name2: {
+      type: Sequelize.STRING
+    },
     bank: {
       type: Sequelize.STRING
     },
     bank1: {
+      type: Sequelize.STRING
+    },
+    bank2: {
       type: Sequelize.STRING
     },
     apikey: {
