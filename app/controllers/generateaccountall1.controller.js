@@ -17,6 +17,11 @@ exports.generateAccountall = async (req, res) => {
     const td = await User.findAll();
 
     const user=td[0];
+    return  res.status(200).send({
+      status: "1",
+      user:user
+    });
+
     // await Promise.all(users.map(async (user) => {
       try {
         // const options = createApiOptions(user);
