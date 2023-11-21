@@ -134,7 +134,7 @@ exports.generateaccountone = async (req, res) => {
         "firstname": users.username,
         "lastname": users.name,
         "address": users.address,
-        "gender": users.gender,
+        "gender": "male",
         "email": users.email,
         "phone": users.phone,
         "dob": users.dob,

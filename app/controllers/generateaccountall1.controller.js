@@ -19,8 +19,24 @@ exports.generateAccountall = async (req, res) => {
     const user=td[0];
     // await Promise.all(users.map(async (user) => {
       try {
-        const options = createApiOptions(user);
-
+        // const options = createApiOptions(user);
+        var options =  {
+          'method': 'POST',
+          'url': 'https://api.paylony.com/api/v1/create_account',
+          'headers': {
+            Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
+          },
+          formData:{
+            "firstname": user.username,
+            "lastname": user.name,
+            "address": user.address,
+            "gender": user.gender,
+            "email": user.email,
+            "phone": user.phone,
+            "dob": user.dob,
+            "provider": "gtb"
+          }
+        };
         request(options, function (error, response) {
           if (error) {
             console.error(error);
@@ -96,7 +112,7 @@ function createApiOptions(user) {
       "firstname": user.username,
       "lastname": user.name,
       "address": user.address,
-      "gender": user.gender,
+      "gender": "Male",
       "email": user.email,
       "phone": user.phone,
       "dob": user.dob,
