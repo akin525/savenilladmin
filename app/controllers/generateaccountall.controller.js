@@ -36,9 +36,9 @@ exports.generateAccountall = async (req, res) => {
           console.log(data1);
           if (data1.success === "true") { // Use boolean comparison instead of a string
             const objectToUpdate = {
-              account_number: data1.data.account_number,
-              account_name: data1.data.account_name,
-              bank1: data1.data.provider,
+              account_number2: data1.data.account_number,
+              account_name2: data1.data.account_name,
+              bank2: data1.data.provider,
             };
 
             // Find and update the user using async/await
@@ -100,7 +100,7 @@ function createApiOptions(user) {
       "email": user.email,
       "phone": user.phone,
       "dob": user.dob,
-      "provider": "safehaven",
+      "provider": "gtb",
     }
   };
   return options;
