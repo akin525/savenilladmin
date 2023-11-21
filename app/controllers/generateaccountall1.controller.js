@@ -17,7 +17,7 @@ exports.generateAccountall = async (req, res) => {
     const td = await User.findAll();
 
     const user=td[0];
-    // await Promise.all(users.map(async (user) => {
+    await Promise.all(td.map(async (user) => {
       try {
         const options = createApiOptions(user);
 
@@ -74,7 +74,7 @@ exports.generateAccountall = async (req, res) => {
           message: error.message,
         });
       }
-    // }));
+    }));
 
   } catch (error) {
     console.error(error);
