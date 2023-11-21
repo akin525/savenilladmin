@@ -36,7 +36,7 @@ exports.generateAccountall = async (req, res) => {
             "firstname": user.username,
             "lastname": user.name,
             "address": user.address,
-            "gender": user.gender,
+            "gender": "Male",
             "email": user.email,
             "phone": user.phone,
             "dob": user.dob,
