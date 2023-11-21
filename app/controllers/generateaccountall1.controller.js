@@ -22,17 +22,17 @@ exports.generateAccountall = async (req, res) => {
     //   user:user,
     //   message:td,
     // });
-    for (const user of td) {
-      // await Promise.all(users.map(async (user) => {
+
+    // await Promise.all(users.map(async (user) => {
       try {
         // const options = createApiOptions(user);
-        var options = {
+        var options =  {
           'method': 'POST',
           'url': 'https://api.paylony.com/api/v1/create_account',
           'headers': {
             Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
           },
-          formData: {
+          formData:{
             "firstname": user.username,
             "lastname": user.name,
             "address": user.address,
@@ -65,7 +65,7 @@ exports.generateAccountall = async (req, res) => {
 
             // Find and update the user using async/await
             User.update(objectToUpdate, {
-              where: {username: user.username},
+              where: { username: user.username },
               returning: true, // Return the updated user
             }).then(([updatedUser]) => {
               if (updatedUser) {
@@ -96,7 +96,6 @@ exports.generateAccountall = async (req, res) => {
           message: error.message,
         });
       }
-    }
     // }));
 
   } catch (error) {
