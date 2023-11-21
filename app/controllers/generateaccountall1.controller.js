@@ -148,7 +148,7 @@ exports.generateaccountone = async (req, res) => {
 
     var options =  {
       'method': 'POST',
-      'url': 'https://api.paylony.com/api/v1/create_account',
+      'url': 'https://api.paylony.com/api/v1/create_account/',
       'headers': {
         Authorization: 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz'
       },
@@ -156,7 +156,7 @@ exports.generateaccountone = async (req, res) => {
         "firstname": users.username,
         "lastname": users.name,
         "address": users.address,
-        "gender": users.gender,
+        "gender": "Male",
         "email": users.email,
         "phone": users.phone,
         "dob": users.dob,
