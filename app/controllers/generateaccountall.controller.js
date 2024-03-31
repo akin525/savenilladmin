@@ -133,14 +133,15 @@ exports.generateaccountone = async (req, res) => {
       formData:{
         "firstname": users.username,
         "lastname": users.name,
-        "address": users.address,
-        "gender": "male",
+        "address": "Lagos Nigeria",
+        "gender": "Male",
         "email": users.email,
-        "phone": users.phone,
-        "dob": users.dob,
+        "phone": "07040237649",
+        "dob": "1995-01-03",
         "provider": "safehaven"
       }
     };
+
 
     request(options, function (error, response) {
       if (error) throw new Error(error);
