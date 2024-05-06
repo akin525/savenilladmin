@@ -101,7 +101,6 @@ module.exports = function(app) {
     app.get("/api/auth/purchase",
         [authJwt.verifyToken],
         purchase.purchase);
-    app.post("/api/auth/findp", purchase.getpurchase);
     app.get("/api/auth/alldeposit",
         [authJwt.verifyToken],
         alldeposit.alldeposit);
@@ -111,4 +110,6 @@ module.exports = function(app) {
   app.post("/api/auth/with", MCD.vithdrawmcd);
   app.post("/api/auth/reprocess", reprocess.reprocess);
   app.post("/api/auth/mark", reprocess.marksuccess);
+  app.post("/api/auth/findp", purchase.getpurchase);
+
 };
