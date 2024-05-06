@@ -147,3 +147,26 @@ exports.pending =  async (req, res) => {
     res.status(200).send("User Content.");
 
 };
+
+exports.getpurchase =  async (req, res) => {
+    const userid = req.userId;
+    try {
+
+
+        const alldepo =await bill.findOne({
+            where: {
+                id: req.body.id,
+            },
+        });
+
+
+        return res.status(200).send({
+            bill:alldepo,
+        });
+
+    } catch (error) {
+        return res.status(500).send({message: error.message});
+    }
+
+
+};

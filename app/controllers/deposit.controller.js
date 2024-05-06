@@ -121,3 +121,25 @@ exports.alldeposit =  async (req, res) => {
     res.status(200).send("User Content.");
 
 };
+exports.getdeposit =  async (req, res) => {
+    const userid = req.userId;
+    try {
+
+
+        const alldepo =await deposit.findOne({
+            where: {
+                id: req.body.id,
+            },
+        });
+
+
+        return res.status(200).send({
+            deposit:alldepo,
+        });
+
+    } catch (error) {
+        return res.status(500).send({message: error.message});
+    }
+
+
+};

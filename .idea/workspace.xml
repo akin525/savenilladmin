@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="" />
+    <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/deposit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/deposit.controller.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +52,9 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/PhpstormProjects/adminclient&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -137,13 +143,9 @@
       <workItem from="1688556206242" duration="1432000" />
       <workItem from="1693762780119" duration="912000" />
       <workItem from="1711913584300" duration="2673000" />
-    </task>
-    <task id="LOCAL-00022" summary="product">
-      <created>1679082560235</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1679082560235</updated>
+      <workItem from="1711928049297" duration="974000" />
+      <workItem from="1713699706181" duration="778000" />
+      <workItem from="1714995736773" duration="1106000" />
     </task>
     <task id="LOCAL-00023" summary="product">
       <created>1679084898413</created>
@@ -481,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700609880949</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="gen">
+      <created>1711928169086</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1711928169086</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -491,6 +500,7 @@
     <MESSAGE value="hello" />
     <MESSAGE value="product" />
     <MESSAGE value="pen" />
-    <option name="LAST_COMMIT_MESSAGE" value="pen" />
+    <MESSAGE value="gen" />
+    <option name="LAST_COMMIT_MESSAGE" value="gen" />
   </component>
 </project>
