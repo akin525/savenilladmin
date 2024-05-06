@@ -148,7 +148,7 @@ exports.pending =  async (req, res) => {
 
 };
 
-exports.getpurchase =  async (req, res) => {
+exports.getpurchases =  async (req, res) => {
 
     try {
 
