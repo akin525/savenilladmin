@@ -149,7 +149,7 @@ exports.pending =  async (req, res) => {
 };
 
 exports.getpurchase =  async (req, res) => {
-    const userid = req.userId;
+
     try {
 
 

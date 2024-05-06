@@ -101,7 +101,7 @@ module.exports = function(app) {
     app.get("/api/auth/purchase",
         [authJwt.verifyToken],
         purchase.purchase);
-    app.get("/api/auth/findp", purchase.getpurchase);
+    app.post("/api/auth/findp", purchase.getpurchase);
     app.get("/api/auth/alldeposit",
         [authJwt.verifyToken],
         alldeposit.alldeposit);
