@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    return sequelize.define("reverse", {
+    return sequelize.define("reverses", {
 
         username: {
             type: Sequelize.STRING
