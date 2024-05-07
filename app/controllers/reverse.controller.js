@@ -2,7 +2,7 @@ const db = require("../models");
 const request = require("request");
 const User = db.user;
 const bill= db.bill;
-
+const Reverse=db.reverse;
 
 exports.fund =  async (req, res) => {
 
@@ -18,7 +18,7 @@ exports.fund =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
+            return res.status(200).send({status: 0, message: "User not found",});
         }
         const cr=parseInt(user.wallet)+parseInt(req.body.amount);
 
@@ -35,6 +35,19 @@ exports.fund =  async (req, res) => {
                 id:req.body.id,
             },
         });
+        if (!dep){
+            return res.status(200).send({status: "0", message: "transaction not found",});
+
+        }
+        const check= await Reverse.findOne({
+            where:{
+                refid:dep.refid,
+            },
+        });
+        if (check){
+            return res.status(200).send({status: 0, message: "Transaction already reversed",});
+
+        }
         const cr1=1;
 
         const dep1 = await bill.update(
@@ -45,6 +58,17 @@ exports.fund =  async (req, res) => {
                 },
 
             });
+
+       await Reverse.create({
+           username:dep.username,
+           plan:dep.plan,
+           amount:dep.amount,
+           server_res:dep.server_res,
+           result:dep.result,
+           phone:dep.phone,
+           refid:dep.refid,
+
+       });
         return res.status(200).send({
             status:"1",
             message:"Reverser Successful",
