@@ -57,18 +57,18 @@ exports.fundback =  async (req, res) => {
             { result: cr1 },
             {
                 where: {
-                    id:dep.id,
+                    id:depo.id,
                 },
 
             });
         const sam=await Reverse.create({
-            username:dep.username,
-            plan:dep.plan,
-            amount:dep.amount,
-            server_res:dep.server_res,
+            username:depo.username,
+            plan:depo.plan,
+            amount:depo.amount,
+            server_res:depo.server_res,
             result:2,
-            phone:dep.phone,
-            refid:dep.refid,
+            phone:depo.phone,
+            refid:depo.refid,
 
         });
 
