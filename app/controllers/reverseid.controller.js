@@ -61,7 +61,7 @@ exports.fundback =  async (req, res) => {
                 },
 
             });
-        await Reverse.create({
+        const sam=await Reverse.create({
             username:dep.username,
             plan:dep.plan,
             amount:dep.amount,
