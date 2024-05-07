@@ -55,7 +55,7 @@ exports.fundback =  async (req, res) => {
             plan:dep.plan,
             amount:dep.amount,
             server_res:dep.server_res,
-            result:dep.result,
+            result:2,
             phone:dep.phone,
             refid:dep.refid,
 
