@@ -27,7 +27,7 @@ exports.fund =  async (req, res) => {
             return res.status(200).send({status: 0, message: "Transaction already reversed",});
 
         }
-        const cr1=2;
+        const cr1="2";
 
         const dep1 = await bill.update(
             { result: cr1 },

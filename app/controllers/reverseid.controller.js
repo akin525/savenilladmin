@@ -51,7 +51,7 @@ exports.fundback =  async (req, res) => {
             });
 
 
-        const cr1=2;
+        const cr1="2";
 
         const dep1 = await bill.update(
             { result: cr1 },
