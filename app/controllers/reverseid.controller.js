@@ -50,6 +50,17 @@ exports.fundback =  async (req, res) => {
 
             });
 
+
+        const cr1=2;
+
+        const dep1 = await bill.update(
+            { result: cr1 },
+            {
+                where: {
+                    id:dep.id,
+                },
+
+            });
         await Reverse.create({
             username:dep.username,
             plan:dep.plan,
@@ -62,7 +73,7 @@ exports.fundback =  async (req, res) => {
         });
 
         return res.status(200).send({
-            status:"1",
+            status:1,
             message:"Reverser Successful",
         });
 

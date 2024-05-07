@@ -9,34 +9,13 @@ exports.fund =  async (req, res) => {
 
     try {
 
-
-        // const user = await User.findOne({
-        //     where: {
-        //         username: req.body.username,
-        //     },
-        // });
-
-        // if (!user) {
-        //     // req.session = null;
-        //     return res.status(200).send({status: 0, message: "User not found",});
-        // }
-        // const cr=parseInt(user.wallet)+parseInt(req.body.amount);
-        //
-        // const user1 = await User.update(
-        //     { wallet: cr },
-        //     {
-        //         where: {
-        //             username:user.username,
-        //         },
-        //
-        //     });
         const dep= await bill.findOne({
             where:{
                 refid:req.body.refid,
             },
         });
         if (!dep){
-            return res.status(200).send({status: "0", message: "transaction not found",});
+            return res.status(200).send({status: 0, message: "transaction not found",});
 
         }
         const check= await Reverse.findOne({
@@ -48,13 +27,13 @@ exports.fund =  async (req, res) => {
             return res.status(200).send({status: 0, message: "Transaction already reversed",});
 
         }
-        const cr1=1;
+        const cr1=2;
 
         const dep1 = await bill.update(
             { result: cr1 },
             {
                 where: {
-                    id:dep.id,
+                    refid:dep.refid,
                 },
 
             });
@@ -69,7 +48,7 @@ exports.fund =  async (req, res) => {
            refid:dep.refid,
        });
         return res.status(200).send({
-            status:"1",
+            status:1,
             message:"Reverser Successful",
         });
 
