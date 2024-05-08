@@ -33,7 +33,7 @@ exports.fundback =  async (req, res) => {
         }
         const check= await Reverse.findOne({
             where:{
-                refid:dep.refid,
+                refid:depo.refid,
             },
         });
         if (check){
