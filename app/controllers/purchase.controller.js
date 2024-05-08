@@ -25,13 +25,7 @@ exports.purchase =  async (req, res) => {
         const  yesterday= new Date(new Date().setDate(new Date().getDate() - 1));
         const yesterdayInYMD = yesterday.toISOString().slice(0,10);
 
-        const allbill =await bill.findAll({
-            where:{
-                result:1,
-
-            },
-
-        });
+        const allbill =await bill.findAll();
         const sumallbill=await  bill.sum('amount');
         const countallbill=await bill.count();
         const counttoday= await bill.count({
