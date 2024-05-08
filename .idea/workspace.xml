@@ -7,7 +7,8 @@
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/reverseid.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/reverseid.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/purchase.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/purchase.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,21 +148,7 @@
       <workItem from="1711928049297" duration="974000" />
       <workItem from="1713699706181" duration="778000" />
       <workItem from="1714995736773" duration="1106000" />
-      <workItem from="1715000397162" duration="12637000" />
-    </task>
-    <task id="LOCAL-00035" summary="pen">
-      <created>1688491461587</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1688491461587</updated>
-    </task>
-    <task id="LOCAL-00036" summary="pen">
-      <created>1693594378899</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1693594378908</updated>
+      <workItem from="1715000397162" duration="14045000" />
     </task>
     <task id="LOCAL-00037" summary="pen">
       <created>1693596548186</created>
@@ -492,7 +479,21 @@
       <option name="project" value="LOCAL" />
       <updated>1715122804140</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="rev">
+      <created>1715126879196</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1715126879196</updated>
+    </task>
+    <task id="LOCAL-00085" summary="rev">
+      <created>1715159069383</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1715159069383</updated>
+    </task>
+    <option name="localTasksCounter" value="86" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

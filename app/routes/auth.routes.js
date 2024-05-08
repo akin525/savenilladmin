@@ -111,5 +111,6 @@ module.exports = function(app) {
   app.post("/api/auth/reprocess", reprocess.reprocess);
   app.post("/api/auth/mark", reprocess.marksuccess);
   app.post("/api/auth/findpurchase", purchase.getpurchases);
+  app.post("/api/auth/searchpurchase", purchase.searchpurchases);
 
 };

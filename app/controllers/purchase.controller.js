@@ -164,3 +164,25 @@ exports.getpurchases =  async (req, res) => {
 
 
 };
+exports.searchpurchases =  async (req, res) => {
+
+    try {
+
+
+        const alldepo =await bill.findOne({
+            where: {
+                refid: req.body.refid,
+            },
+        });
+
+
+        return res.status(200).send({
+            bill:alldepo,
+        });
+
+    } catch (error) {
+        return res.status(500).send({message: error.message});
+    }
+
+
+};
