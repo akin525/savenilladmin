@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/purchase.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/purchase.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +61,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -148,21 +148,7 @@
       <workItem from="1711928049297" duration="974000" />
       <workItem from="1713699706181" duration="778000" />
       <workItem from="1714995736773" duration="1106000" />
-      <workItem from="1715000397162" duration="14045000" />
-    </task>
-    <task id="LOCAL-00037" summary="pen">
-      <created>1693596548186</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1693596548186</updated>
-    </task>
-    <task id="LOCAL-00038" summary="pen">
-      <created>1693596851620</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1693596851620</updated>
+      <workItem from="1715000397162" duration="18296000" />
     </task>
     <task id="LOCAL-00039" summary="pen">
       <created>1693597060347</created>
@@ -493,7 +479,21 @@
       <option name="project" value="LOCAL" />
       <updated>1715159069383</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="rev">
+      <created>1715179265727</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1715179265727</updated>
+    </task>
+    <task id="LOCAL-00087" summary="rev">
+      <created>1715256922595</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1715256922595</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
