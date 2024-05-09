@@ -185,6 +185,7 @@ exports.searchpurchases =  async (req, res) => {
 
         return res.status(200).send({
             bill:alldepo,
+            samson:"hello av updated",
         });
 
     } catch (error) {
