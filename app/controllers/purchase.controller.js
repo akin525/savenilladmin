@@ -171,7 +171,9 @@ exports.searchpurchases =  async (req, res) => {
 
         const alldepo =await bill.findOne({
             where: {
-                refid: req.body.refid,
+                refid: {
+                    [Op.like]: `%${req.body.refid}%`,
+                },
             },
         });
 
