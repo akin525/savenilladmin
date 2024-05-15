@@ -125,10 +125,7 @@ exports.generateaccountone = async (req, res) => {
     //   var options = createApiOptions(users);
 
 
-    return res.status(200).send({
-      status: '1',
-      message: req.body,
-    });
+
 
     var options =  {
       'method': 'POST',
@@ -178,11 +175,16 @@ exports.generateaccountone = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
+    // return res.status(200).send({
+    //   status: '0',
+    //   body:req.body.username,
+    //   message: error.message,
+    // });
+
     return res.status(200).send({
-      status: '0',
-      body:req.body.username,
-      message: error.message,
-    });
+      status: '100',
+      message: req.body,
+    })
   }
 
 };
