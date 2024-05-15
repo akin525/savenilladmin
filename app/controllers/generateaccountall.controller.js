@@ -124,6 +124,12 @@ exports.generateaccountone = async (req, res) => {
     // Use Promise.all to parallelize requests
     //   var options = createApiOptions(users);
 
+
+    return res.status(200).send({
+      status: '1',
+      message: req.body,
+    });
+
     var options =  {
       'method': 'POST',
       'url': 'https://api.paylony.com/api/v1/create_account',
