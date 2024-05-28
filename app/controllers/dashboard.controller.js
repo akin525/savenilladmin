@@ -104,13 +104,11 @@ exports.dashboard =  async (req, res) => {
 
         var request = require('request');
         var options = {
-            'method': 'POST',
-            'url': 'https://app2.mcd.5starcompany.com.ng/api/reseller/me',
+            'method': 'GET',
+            'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/my-balance',
             'headers': {
-                'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
-            },
-            formData: {
-                'service': 'balance'
+                'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
+                'Content-Type': 'application/json'
             }
         };
 
