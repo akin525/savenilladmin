@@ -101,6 +101,21 @@ exports.dashboard =  async (req, res) => {
             }
         );
 
+
+        var request = require('request');
+        var options = {
+            'method': 'GET',
+            'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/my-balance',
+            'headers': {
+                'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
+                'Content-Type': 'application/json'
+            }
+        };
+
+        request(options, function (error, response) {
+            // if (error) throw new Error(error);
+            console.log(response.body);
+            var data=JSON.parse(response.body);
             return res.status(200).send({
                 id: user.id,
                 username: user.username,
@@ -117,8 +132,9 @@ exports.dashboard =  async (req, res) => {
                 allcharges:allcharges??0,
                 todaypurchase:todaypurchase??0,
                 todaydeposit:todaydeposit??0,
+                mcd:data.data.wallet,
             });
-
+        });
 
 
     } catch (error) {
