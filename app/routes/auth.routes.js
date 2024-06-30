@@ -35,6 +35,7 @@ const MCD=require("../controllers/mcd.controller");
 const reprocess=require("../controllers/reprocess.controller");
 const account2=require("../controllers/generateaccountall.controller");
 const account3=require("../controllers/generateaccountall1.controller");
+const paylony =require("../controllers/Paylony.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -46,6 +47,9 @@ module.exports = function(app) {
     );
     next();
   });
+
+  app.get("/paylonybalance", paylony.balance);
+  app.get("/paylonyacct", paylony.virtualacct);
 
   app.get("/api/auth/newaccount", account2.generateAccountall);
   app.get("/api/auth/newacc", account3.generateAccountall);

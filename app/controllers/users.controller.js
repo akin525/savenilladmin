@@ -77,6 +77,5 @@ exports.users =  async (req, res) => {
         return res.status(500).send({message: error.message});
     }
 
-    res.status(200).send("User Content.");
 
 };

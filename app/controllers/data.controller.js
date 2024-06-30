@@ -26,6 +26,5 @@ exports.data =  async (req, res) => {
             message: error.message});
     }
 
-    res.status(200).send("User Content.");
 
 };

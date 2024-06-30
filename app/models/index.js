@@ -33,7 +33,10 @@ db.settings=require("../models/settings.model.js")(sequelize, sequelize);
 db.charges=require("../models/charges.model.js")(sequelize, sequelize);
 db.message=require("../models/message.model.js")(sequelize, sequelize);
 db.reverse=require("../models/reverse.model.js")(sequelize, sequelize);
-
+// db.mcd=require("../models/mcd.model.js")(sequelize, sequelize);
+db.gateway=require("../models/gateway.model.js")(sequelize, sequelize);
+db.gmarket=require("../models/general")(sequelize, sequelize);
+db.dataserver=require("../models/mcdserver.model.js")(sequelize, Sequelize);
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",

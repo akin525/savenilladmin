@@ -16,13 +16,16 @@ module.exports = (sequelize, Sequelize) => {
     wallet: {
       type: Sequelize.STRING
     },
+    bank: {
+      type: Sequelize.STRING
+    },
+    bank1: {
+      type: Sequelize.STRING
+    },
     account_number: {
       type: Sequelize.STRING
     },
     account_number1: {
-      type: Sequelize.STRING
-    },
-    account_number2: {
       type: Sequelize.STRING
     },
     account_name: {
@@ -31,35 +34,49 @@ module.exports = (sequelize, Sequelize) => {
     account_name1: {
       type: Sequelize.STRING
     },
-    account_name2: {
-      type: Sequelize.STRING
-    },
-    bank: {
-      type: Sequelize.STRING
-    },
-    bank1: {
-      type: Sequelize.STRING
-    },
-    bank2: {
-      type: Sequelize.STRING
-    },
-    apikey: {
-      type: Sequelize.STRING
-    },
-    password: {
+    gender: {
       type: Sequelize.STRING
     },
     dob: {
       type: Sequelize.STRING
     },
+    apikey: {
+      type: Sequelize.STRING
+    },
     address: {
       type: Sequelize.STRING
     },
-    role: {
+    password: {
       type: Sequelize.STRING
     },
-    gender: {
+    pin: {
       type: Sequelize.STRING
-    }
+    },
+    is_verify: {
+      type: Sequelize.STRING
+    },
+    point: {
+      type: Sequelize.STRING
+    },
+    cashback: {
+      type: Sequelize.STRING
+    },
+    reward: {
+      type: Sequelize.STRING
+    },
+    applogin: {
+      type: Sequelize.STRING
+    },
+    timeappopen: {
+      type: Sequelize.STRING
+    },
+    '15minrewarded': {
+      type: Sequelize.STRING
+    },
+
+    '5minrewarded':{
+      type:Sequelize.STRING
+    },
+
   });
 };

@@ -71,9 +71,10 @@ exports.vithdrawmcd =  async (req, res) => {
                 'method': 'POST',
 
 
-                'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/me',
+                'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/make-withdrawal',
                 'headers': {
-                    'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
+                    'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
+                    'Content-Type': 'application/json'
                 },
                 formData: {
                     'service': 'withdraw_commission',
@@ -81,7 +82,8 @@ exports.vithdrawmcd =  async (req, res) => {
                     'amount': req.body.amount,
                     'account_number': req.body.number,
                     'bank_code': req.body.code,
-                    'bank': req.body.bank
+                    'bank': req.body.bank,
+                    'ref':req.body.refid
                 }
             };
         request(options, function (error, response) {
