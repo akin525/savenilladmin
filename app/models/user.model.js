@@ -64,19 +64,19 @@ module.exports = (sequelize, Sequelize) => {
     reward: {
       type: Sequelize.STRING
     },
-    applogin: {
-      type: Sequelize.STRING
-    },
-    timeappopen: {
-      type: Sequelize.STRING
-    },
-    '15minrewarded': {
-      type: Sequelize.STRING
-    },
-
-    '5minrewarded':{
-      type:Sequelize.STRING
-    },
+    // applogin: {
+    //   type: Sequelize.STRING
+    // },
+    // timeappopen: {
+    //   type: Sequelize.STRING
+    // },
+    // '15minrewarded': {
+    //   type: Sequelize.STRING
+    // },
+    //
+    // '5minrewarded':{
+    //   type:Sequelize.STRING
+    // },
 
   });
 };
