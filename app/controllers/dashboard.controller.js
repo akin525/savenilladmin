@@ -117,7 +117,6 @@ exports.dashboard =  async (req, res) => {
                 allcharges:allcharges??0,
                 todaypurchase:todaypurchase??0,
                 todaydeposit:todaydeposit??0,
-                mcd:data.data.wallet,
             });
 
 
