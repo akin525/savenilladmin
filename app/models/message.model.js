@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    return sequelize.define("messages", {
+    return sequelize.define("messes", {
 
         message: {
             type: Sequelize
