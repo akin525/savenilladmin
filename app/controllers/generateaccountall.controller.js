@@ -112,7 +112,7 @@ exports.generateaccountone = async (req, res) => {
   //   message: req.body,
   // });
 
-  try {
+  // try {
 
     const users = await User.findOne({
       where: {
@@ -120,6 +120,12 @@ exports.generateaccountone = async (req, res) => {
       },
     }); // Assuming productid is an array
 
+    if (!users){
+      return res.status(200).send({
+        status: '0',
+        message: "username does not exit",
+      });
+    }
 
     // Use Promise.all to parallelize requests
     //   var options = createApiOptions(users);
@@ -173,18 +179,18 @@ exports.generateaccountone = async (req, res) => {
       // res.status(200).send(response.body);
 
     });
-  } catch (error) {
-    console.error(error);
-    // return res.status(200).send({
-    //   status: '0',
-    //   body:req.body.username,
-    //   message: error.message,
-    // });
-
-    return res.status(200).send({
-      status: '100',
-      message: req.body,
-    })
-  }
+  // } catch (error) {
+  //   console.error(error);
+  //   return res.status(200).send({
+  //     status: '0',
+  //     body:req.body.username,
+  //     message: error.message,
+  //   });
+  //
+  //   return res.status(200).send({
+  //     status: '100',
+  //     message: req.body,
+  //   })
+  // }
 
 };
