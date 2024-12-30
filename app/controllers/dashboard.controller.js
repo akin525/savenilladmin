@@ -10,123 +10,100 @@ const no =db.message;
 
 
 
-exports.dashboard =  async (req, res) => {
-    const userid = req.userId;
+exports.dashboard = async (req, res) => {
+    const userId = req.userId;
+
     try {
-        let authorities = [];
+        let mcdbalance = 0;
+        let mcdcom = 0;
 
-        const user = await User.findOne({
-            where: {
-                id: userid,
-                role: "admin",
-            },
-        });
-        if (!user) {
-            // req.session = null;
-            return res.status(200).send({status: "0", message: "You not register as admin."});
-        }
-        const allbill =await bill.findAll();
-        const totalbill= await bill.sum('amount');
-        const totaldeposit=await deposit.sum('amount', );
+        const fetchMcBalance = async () => {
+            try {
+                const config = {
+                    method: 'get',
+                    maxBodyLength: Infinity,
+                    url: 'https://reseller.mcd.5starcompany.com.ng/api/v1/my-balance',
+                    headers: {
+                        Authorization: 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
+                    },
+                };
 
-        const pendingtransaction =await bill.count({
-            where:{
-                result:"0",
-            },
-        });
-        const date =new Date().toISOString().split('T')[0];
-
-        const allusers=await User.count();
-        const newusers=await User.count({
-            where:{
-                date: {
-                    [Op.like]: `%${date}%`,
-                },
-            },
-        });
-        const allwallet=await User.sum('wallet');
-        const todaypurchase=await bill.sum('amount',{
-            where:{
-                date: {
-                    [Op.like]: `%${date}%`,
-                },
-
-            },
-        })
-        const todaydeposit=await deposit.sum('amount',{
-            where:{
-                date: {
-                    [Op.like]: `%${date}%`,
-                },
-
-            },
-        })
-
-
-        const week = 1; // The week number you want to sum the amount for
-
-        const dailyTotals = await bill.sum('amount',{
-            where:{
-                date: {
-                    [Op.like]: `%${date}%`,
-                },
-            },
-        });
-
-        console.log(dailyTotals);
-
-
-        const allock = await lock.sum('balance');
-        const allcharges=await charges.sum('amount');
-        const dataprofit=await profits.sum('amount');
-
-        const today = new Date().toISOString().split('T')[0];
-        const yesterday = new Date(today);
-        yesterday.setDate(today - 1);
-
-        console.log(yesterday);
-        const yesterdayDepo = await deposit.sum('amount', {
-            where: {
-                createdAt:yesterday,
-            },
-        });
-        console.log(yesterdayDepo);
-        console.log(today);
-
-        const noti=await no.findOne(
-            {
-                where:{
-                    status:"1",
-                },
+                const response = await axios.request(config);
+                mcdbalance = response.data.data.wallet || 0;
+                mcdcom = response.data.data.commission || 0;
+            } catch (error) {
+                console.error('Error fetching MC balance:', error.message);
+                if (error.response) {
+                    console.error('Response Data:', error.response.data);
+                }
             }
-        );
+        };
+
+        // Check if user is an admin
+        const user = await User.findOne({
+            where: { id: userId, role: 'admin' },
+        });
+
+        if (!user) {
+            return res.status(403).send({ status: '0', message: 'You are not registered as an admin.' });
+        }
 
 
+        const [
+            allbill,
+            totalbill,
+            totaldeposit,
+            pendingTransaction,
+            allusers,
+            newusers,
+            allwallet,
+            todayPurchase,
+            todayDeposit,
+            allock,
+            allCharges,
+            dataProfit,
+            notification
+        ] = await Promise.all([
+            bill.findAll(),
+            bill.sum('amount'),
+            deposit.sum('amount'),
+            bill.count({ where: { result: '0' } }),
+            User.count(),
+            User.count({ where: { date: { [Op.like]: `%${new Date().toISOString().split('T')[0]}%` } } }),
+            User.sum('wallet'),
+            bill.sum('amount', { where: { date: { [Op.like]: `%${new Date().toISOString().split('T')[0]}%` } } }),
+            deposit.sum('amount', { where: { date: { [Op.like]: `%${new Date().toISOString().split('T')[0]}%` } } }),
+            lock.sum('balance'),
+            charges.sum('amount'),
+            profits.sum('amount'),
+            no.findOne({ where: { status: '1' } }),
+        ]);
 
-            return res.status(200).send({
-                id: user.id,
-                username: user.username,
-                email: user.email,
-               wallet: parseInt(allwallet),
-                totalbill:totalbill??0,
-                totaldeposit:totaldeposit??0,
-                allock:allock??0,
-                users:allusers,
-                noti:noti.message,
-                newusers:newusers,
-                pendingtransaction:pendingtransaction,
-                dataprofit:dataprofit??0,
-                allcharges:allcharges??0,
-                todaypurchase:todaypurchase??0,
-                todaydeposit:todaydeposit??0,
-            });
+        // Fetch MC balance
+        await fetchMcBalance();
 
-
-
+        // Send the response
+        return res.status(200).send({
+            id: user.id,
+            username: user.username,
+            email: user.email,
+            wallet: parseInt(allwallet, 10) || 0,
+            totalbill: totalbill || 0,
+            totaldeposit: totaldeposit || 0,
+            allock: allock || 0,
+            users: allusers || 0,
+            newusers: newusers || 0,
+            pendingtransaction: pendingTransaction || 0,
+            dataprofit: dataProfit || 0,
+            allcharges: allCharges || 0,
+            todaypurchase: todayPurchase || 0,
+            todaydeposit: todayDeposit || 0,
+            noti: notification ? notification.message : null,
+            mcdbalance,
+            mcdcom,
+        });
     } catch (error) {
-        return res.status(500).send({message: error.message});
+        console.error('Dashboard Error:', error);
+        return res.status(500).send({ message: 'Internal Server Error', error: error.message });
     }
-
-    // res.status(200).send("User Content.");
-
 };
