@@ -76,7 +76,7 @@ exports.dashboard = async (req, res) => {
             lock.sum('balance'),
             charges.sum('amount'),
             profits.sum('amount'),
-            no.findOne({ where: { success:true } }),
+            no.findOne({ where: { status: '1' } }),
         ]);
 
         // Fetch MC balance
