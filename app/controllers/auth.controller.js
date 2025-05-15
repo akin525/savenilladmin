@@ -29,14 +29,14 @@ exports.signup = async (req, res) => {
       });
 
       const result = user.setRoles(roles);
-      if (result) res.send({ status: "1", message: "User registered successfully!" });
+      if (result) res.send({ success:true, message: "User registered successfully!" });
     } else {
       // user has role = 1
       const result = user.setRoles([1]);
-      if (result) res.send({ status: "1", message: "User registered successfully!" });
+      if (result) res.send({ success:true, message: "User registered successfully!" });
     }
   } catch (error) {
-    res.status(500).send({status: "1", message: error.message });
+    res.status(500).send({success:true, message: error.message });
   }
 };
 
@@ -50,7 +50,7 @@ exports.signin = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(200).send({status: "0", message: "You Are Not Register As Admin" });
+      return res.status(200).send({success:false, message: "You Are Not Register As Admin" });
     }
 
     const passwordIsValid = bcrypt.compareSync(
@@ -60,7 +60,7 @@ exports.signin = async (req, res) => {
 
     if (!passwordIsValid) {
       return res.status(200).send({
-        status: "0",
+        success:false,
         message: "Invalid Password!",
       });
     }
@@ -78,12 +78,16 @@ exports.signin = async (req, res) => {
     // req.session.token = token;
 
     return res.status(200).send({
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      roles: authorities,
-      token: token,
+      success:true,
+      token:token,
+      data: {
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        roles: authorities,
+        token: token,
+      }
     });
   } catch (error) {
     return res.status(200).send({ message: error.message });

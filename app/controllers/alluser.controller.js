@@ -24,7 +24,7 @@ exports.allusers =  async (req, res) => {
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
      users:user,
       reseller:reseller,
       totaluser:alluser,

@@ -24,7 +24,7 @@ const user = await User.findOne({
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
      users:user,
     });
 

@@ -22,7 +22,7 @@ exports.buyelect =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
 
         const product= await data.findOne({
@@ -53,7 +53,7 @@ exports.buyelect =  async (req, res) => {
         if (totalbill)
         {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction"
             });
         }
@@ -111,7 +111,7 @@ exports.buyelect =  async (req, res) => {
                     }
                 })
                 return   res.status(200).send({
-                    status: "1",
+                    success:true,
                     id:bil.id,
                     user:user.username,
                     message:req.body.id+" Token was Successfully generated: "+data.token,
@@ -119,7 +119,7 @@ exports.buyelect =  async (req, res) => {
                 });
             } else if (data.success===0) {
                 return   res.status(200).send({
-                    status: "0",
+                    success:false,
                     message: data.message
                 });
             }

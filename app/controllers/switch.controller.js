@@ -35,7 +35,7 @@ let up="";
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       message:'Status Change successful',
       product:product,
     });
@@ -81,7 +81,7 @@ exports.updatepro=  async (req, res) => {
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       message:'Update successful',
       product:product,
     });

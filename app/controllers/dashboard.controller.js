@@ -45,7 +45,7 @@ exports.dashboard = async (req, res) => {
         });
 
         if (!user) {
-            return res.status(403).send({ status: '0', message: 'You are not registered as an admin.' });
+            return res.status(403).send({ success:false, message: 'You are not registered as an admin.' });
         }
 
 
@@ -76,7 +76,7 @@ exports.dashboard = async (req, res) => {
             lock.sum('balance'),
             charges.sum('amount'),
             profits.sum('amount'),
-            no.findOne({ where: { status: '1' } }),
+            no.findOne({ where: { success:true } }),
         ]);
 
         // Fetch MC balance
@@ -84,23 +84,26 @@ exports.dashboard = async (req, res) => {
 
         // Send the response
         return res.status(200).send({
-            id: user.id,
-            username: user.username,
-            email: user.email,
-            wallet: parseInt(allwallet, 10) || 0,
-            totalbill: totalbill || 0,
-            totaldeposit: totaldeposit || 0,
-            allock: allock || 0,
-            users: allusers || 0,
-            newusers: newusers || 0,
-            pendingtransaction: pendingTransaction || 0,
-            dataprofit: dataProfit || 0,
-            allcharges: allCharges || 0,
-            todaypurchase: todayPurchase || 0,
-            todaydeposit: todayDeposit || 0,
-            noti: notification ? notification.message : null,
-            mcdbalance,
-            mcdcom,
+            success: true,
+            data: {
+                id: user.id,
+                username: user.username,
+                email: user.email,
+                wallet: parseInt(allwallet, 10) || 0,
+                totalbill: totalbill || 0,
+                totaldeposit: totaldeposit || 0,
+                allock: allock || 0,
+                users: allusers || 0,
+                newusers: newusers || 0,
+                pendingtransaction: pendingTransaction || 0,
+                dataprofit: dataProfit || 0,
+                allcharges: allCharges || 0,
+                todaypurchase: todayPurchase || 0,
+                todaydeposit: todayDeposit || 0,
+                noti: notification ? notification.message : null,
+                mcdbalance,
+                mcdcom,
+            }
         });
     } catch (error) {
         console.error('Dashboard Error:', error);

@@ -38,7 +38,7 @@ exports.verifyelect =  async (req, res) => {
                 });
             } else if (data.success===0) {
               return   res.status(200).send({
-                    status: "0",
+                    success:false,
                     message: data.data
                 });
             }

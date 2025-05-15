@@ -4,9 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="rev">
+    <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="bank">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/addlock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/addlock.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/airtime.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/airtime.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/allinterest.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/allinterest.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/alluser.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/alluser.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buydata.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydata.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/credit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/credit.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/debit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/debit.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/deposit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/deposit.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dreport.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dreport.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/findpu.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/findpu.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/finduser.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/finduser.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/generateaccountall1.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/generateaccountall1.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/product.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/product.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/profile.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/profile.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/purchase.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/purchase.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/report.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/report.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/reprocess.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/reprocess.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/reverseid.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/reverseid.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/run.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/run.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/safelock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/safelock.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/success.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/success.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/switch.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/switch.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/update.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/update.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/updatenoti.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/updatenoti.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/users.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/users.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/wreport.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/wreport.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/middleware/verifySignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/verifySignUp.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -45,9 +79,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2ICD7TB8ws8M0sGjuX93CTpnAGz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -66,8 +100,8 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "20.16.0",
-    "javascript.nodejs.core.library.typings.version": "20.16.5",
+    "javascript.nodejs.core.library.configured.version": "22.14.0",
+    "javascript.nodejs.core.library.typings.version": "22.14.1",
     "last_opened_file_path": "C:/Users/user/PhpstormProjects/savenilladmin",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -75,7 +109,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -104,6 +138,14 @@
         <item itemvalue="npm.dev" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PS-241.14494.237" />
+        <option value="bundled-php-predefined-ba97393d7c68-8f0632a2a215-com.jetbrains.php.sharedIndexes-PS-241.14494.237" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -173,7 +215,15 @@
       <workItem from="1719719381865" duration="9733000" />
       <workItem from="1720176891951" duration="1551000" />
       <workItem from="1720649244565" duration="1221000" />
-      <workItem from="1725964385298" duration="7634000" />
+      <workItem from="1725964385298" duration="8269000" />
+      <workItem from="1726815209801" duration="266000" />
+      <workItem from="1731418225490" duration="123000" />
+      <workItem from="1735586847245" duration="996000" />
+      <workItem from="1735593051282" duration="1389000" />
+      <workItem from="1736869125150" duration="303000" />
+      <workItem from="1736881390768" duration="192000" />
+      <workItem from="1744319110446" duration="872000" />
+      <workItem from="1747318415762" duration="844000" />
     </task>
     <task id="LOCAL-00050" summary="pen">
       <created>1693603319737</created>
@@ -518,7 +568,7 @@
       <option name="project" value="LOCAL" />
       <updated>1720176941668</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -530,6 +580,7 @@
     <MESSAGE value="pen" />
     <MESSAGE value="gen" />
     <MESSAGE value="rev" />
-    <option name="LAST_COMMIT_MESSAGE" value="rev" />
+    <MESSAGE value="bank" />
+    <option name="LAST_COMMIT_MESSAGE" value="bank" />
   </component>
 </project>

@@ -114,18 +114,20 @@ exports.daily =  async (req, res) => {
         })
         // console.log(allplan);
         return res.status(200).send({
-            status:"1",
-            date:date,
-            datamc:dailycuntdata??0,
-            tvc:dailysumtvc??0,
-            tv:dailysumtv??0,
-            elect:dailysumelect??0,
-            electc:dailysumelectc??0,
-            datems:dailysumdata??0,
-            airtimec:dailycuntairtime??0,
-            airtimes:dailysumtairtime??0,
-            depositc:dailycuntdeposit,
-            deposits:dailysumdeposit,
+            success:true,
+            data: {
+                date: date,
+                datamc: dailycuntdata ?? 0,
+                tvc: dailysumtvc ?? 0,
+                tv: dailysumtv ?? 0,
+                elect: dailysumelect ?? 0,
+                electc: dailysumelectc ?? 0,
+                datems: dailysumdata ?? 0,
+                airtimec: dailycuntairtime ?? 0,
+                airtimes: dailysumtairtime ?? 0,
+                depositc: dailycuntdeposit,
+                deposits: dailysumdeposit,
+            }
         });
 
     } catch (error) {

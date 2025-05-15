@@ -18,7 +18,7 @@ exports.purchase =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
         const today1 = new Date().toISOString().split('T')[0];
         // const dateOnly = today.toISOString().split('T')[0];
@@ -89,14 +89,17 @@ exports.purchase =  async (req, res) => {
             },
         });
         return res.status(200).send({
-            all:allbill,
-            sumbill:sumallbill,
-            todaybill:todaybill??0,
-            yesterdaybill:yesterdaybill??0,
-            twodaybill:twodaybill??0,
-            threedaybill:threedaybill??0,
-            fourdaybill:fourdaybill??0,
-            aweekbill:aweekbill??0,
+            success:true,
+            data: {
+                all: allbill,
+                sumbill: sumallbill,
+                todaybill: todaybill ?? 0,
+                yesterdaybill: yesterdaybill ?? 0,
+                twodaybill: twodaybill ?? 0,
+                threedaybill: threedaybill ?? 0,
+                fourdaybill: fourdaybill ?? 0,
+                aweekbill: aweekbill ?? 0,
+            }
         });
     } catch (error) {
         return res.status(500).send({message: error.message});
@@ -121,7 +124,7 @@ exports.pending =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
 
         const allbill =await bill.findAll({

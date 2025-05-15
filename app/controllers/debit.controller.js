@@ -18,13 +18,13 @@ exports.Debit =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
+            return res.status(200).send({success: false, message: "User not found",});
         }
         if (req.body.amount =="") {
-            return res.status(200).send({status:"0", message: "Please enter amount"});
+            return res.status(200).send({success:false, message: "Please enter amount"});
         }
         if (req.body.amount =="0") {
-            return res.status(200).send({status:"0", message: "Please enter amount above 0"});
+            return res.status(200).send({success:false, message: "Please enter amount above 0"});
         }
         const dep= await charge.findOne({
             where:{
@@ -34,7 +34,7 @@ exports.Debit =  async (req, res) => {
         if (dep)
         {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction"
             });
         }
@@ -57,7 +57,7 @@ exports.Debit =  async (req, res) => {
 
             });
         return res.status(200).send({
-            status:"1",
+            success:true,
             message:"User Charge Successfully",
        userdetail:user,
             in:insert,

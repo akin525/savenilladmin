@@ -13,7 +13,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
     if (user) {
       return res.status(200).send({
-        status: "0",
+        success:false,
         message: "Failed! Username is already in use!"
       });
     }
@@ -27,7 +27,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
 
     if (user) {
       return res.status(200).send({
-        status: "0",
+        success:false,
         message: "Failed! Email is already in use!"
       });
     }
@@ -35,7 +35,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
     next();
   } catch (error) {
     return res.status(500).send({
-      status: "0",
+      success:false,
       message: error.message
     });
   }
@@ -46,7 +46,7 @@ checkRolesExisted = (req, res, next) => {
     for (let i = 0; i < req.body.roles.length; i++) {
       if (!ROLES.includes(req.body.roles[i])) {
         res.status(200).send({
-          status: "0",
+          success:false,
           message: "Failed! Role does not exist = " + req.body.roles[i]
         });
         return;

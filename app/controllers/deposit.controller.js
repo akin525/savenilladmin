@@ -16,7 +16,7 @@ exports.alldeposit =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
         const today = new Date().toISOString().split('T')[0];
         // const dateOnly = today.toISOString().split('T')[0];
@@ -104,14 +104,17 @@ exports.alldeposit =  async (req, res) => {
 
         console.log(threeDaysAgoInYMD);
         return res.status(200).send({
-            deposit:alldepo,
-            sumdepo:sundepo,
-            todaydeposit:todaydeposit??0,
-            yesterdayDepo:yesterdayDepo??0,
-            twodayDepo:twodayDepo??0,
-            threedayDepo:threedayDepo??0,
-            fourdayDepo:fourdayDepo??0,
-            aweekDepo:aweekDepo??0,
+            success:true,
+            data: {
+                deposit: alldepo,
+                sumdepo: sundepo,
+                todaydeposit: todaydeposit ?? 0,
+                yesterdayDepo: yesterdayDepo ?? 0,
+                twodayDepo: twodayDepo ?? 0,
+                threedayDepo: threedayDepo ?? 0,
+                fourdayDepo: fourdayDepo ?? 0,
+                aweekDepo: aweekDepo ?? 0,
+            },
         });
 
     } catch (error) {

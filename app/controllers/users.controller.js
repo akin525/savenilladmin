@@ -18,7 +18,7 @@ exports.users =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",
+            return res.status(200).send({success:false, message: "User not found",
                 userdetail:"aaaaa",
                 userdeposit:0,
                 userbill:0,

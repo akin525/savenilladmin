@@ -16,15 +16,15 @@ exports.Credit =  async (req, res) => {
             },
         });
         if (req.body.amount =="") {
-            return res.status(200).send({status:"0", message: "Please enter amount"});
+            return res.status(200).send({success:false, message: "Please enter amount"});
         }
         if (req.body.amount =="0") {
-            return res.status(200).send({status:"0", message: "Please enter amount above 0"});
+            return res.status(200).send({success:false, message: "Please enter amount above 0"});
         }
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
+            return res.status(200).send({success: false, message: "User not found",});
         }
         const dep= await deposit.findOne({
             where:{
@@ -34,7 +34,7 @@ exports.Credit =  async (req, res) => {
         if (dep)
         {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction"
             });
         }
@@ -57,7 +57,8 @@ exports.Credit =  async (req, res) => {
 
             });
         return res.status(200).send({
-            status:"1",
+
+            success:true,
             message:"User Fund Successfully",
        userdetail:user,
             in:insert,

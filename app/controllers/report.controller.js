@@ -114,18 +114,20 @@ exports.month =  async (req, res) => {
         })
         // console.log(allplan);
         return res.status(200).send({
-            status:"1",
-            date:date,
-            datamc:monthcuntdata??0,
-            tvc:monthsumtvc??0,
-            tv:monthsumtv??0,
-            elect:monthsumelect??0,
-            electc:monthsumelectc??0,
-            datems:monthsumdata??0,
-            airtimec:monthcuntairtime??0,
-            airtimes:monthsumtairtime??0,
-            depositc:monthcuntdepo??0,
-            deposits:monthsumdepo??0,
+            success:true,
+            data: {
+                date: date,
+                datamc: monthcuntdata ?? 0,
+                tvc: monthsumtvc ?? 0,
+                tv: monthsumtv ?? 0,
+                elect: monthsumelect ?? 0,
+                electc: monthsumelectc ?? 0,
+                datems: monthsumdata ?? 0,
+                airtimec: monthcuntairtime ?? 0,
+                airtimes: monthsumtairtime ?? 0,
+                depositc: monthcuntdepo ?? 0,
+                deposits: monthsumdepo ?? 0,
+            }
         });
 
     } catch (error) {

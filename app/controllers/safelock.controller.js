@@ -15,7 +15,7 @@ exports.safelock =  async (req, res) => {
     const allock= await safe.findAll();
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       allock:allock,
     });
 

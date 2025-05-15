@@ -19,7 +19,7 @@ exports.run =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
         const deposite =await deposit.findOne({
             where:{
@@ -28,7 +28,7 @@ exports.run =  async (req, res) => {
         });
         if (deposite) {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction",
                 body:deposite
             });
@@ -50,11 +50,11 @@ exports.run =  async (req, res) => {
             amount:charge.charges,
             iwallet:user.wallet,
             fwallet:parseInt(user.wallet)+amount,
-            status:"1",
+            success:true,
         });
 
         const insertdeposit=await deposit.create({
-            status:"1",
+            success:true,
             username:user.username,
             payment_ref:refid,
             amount:amount,

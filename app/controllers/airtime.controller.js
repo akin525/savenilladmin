@@ -23,7 +23,7 @@ exports.airtime =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
         if (parseInt(user.wallet) < parseInt(req.body.amount)) {
            return  res.status(200).send({
@@ -41,7 +41,7 @@ exports.airtime =  async (req, res) => {
         if (totalbill)
         {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction"
             });
         }
@@ -101,14 +101,14 @@ exports.airtime =  async (req, res) => {
                 })
 
                 return   res.status(200).send({
-                    status: "1",
+                    success:true,
                     user:user.username,
                     message:"Airtime Successfully Delivered To "+req.body.number,
                     server_res:response.body
                 });
             } else if (data.success===0) {
               return   res.status(200).send({
-                    status: "0",
+                    success:false,
                     message: data.message
                 });
             }

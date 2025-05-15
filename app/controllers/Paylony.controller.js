@@ -23,7 +23,7 @@ exports.balance=  async (req, res) => {
 
             console.log(data);
             return res.status(200).send({
-                status:1,
+                success:true,
                 balance:balance,
                 pending:pending
             });
@@ -60,7 +60,7 @@ exports.virtualacct=  async (req, res) => {
 
             console.log(data);
             return res.status(200).send({
-                status:1,
+                success:true,
                 acct:acct
             });
 

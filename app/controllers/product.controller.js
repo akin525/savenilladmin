@@ -15,7 +15,7 @@ exports.product =  async (req, res) => {
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       'product':product,
     });
 
@@ -33,7 +33,7 @@ exports.dataserver =  async (req, res) => {
 
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       server:serverp,
     });
 

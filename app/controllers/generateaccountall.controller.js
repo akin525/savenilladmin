@@ -25,7 +25,7 @@ exports.generateAccountall = async (req, res) => {
           if (error) {
             console.error(error);
             processResults.push({
-              status: '0',
+              success:false,
               message: error.message,
             });
             return;
@@ -48,7 +48,7 @@ exports.generateAccountall = async (req, res) => {
             }).then(([updatedUser]) => {
               if (updatedUser) {
                 processResults.push({
-                  status: '1',
+                  success: true,
                   message: 'Account Generate Successful',
                   server_res: data1,
                 });
@@ -56,13 +56,13 @@ exports.generateAccountall = async (req, res) => {
             }).catch((updateError) => {
               console.error(updateError);
               processResults.push({
-                status: '0',
+                success:false,
                 message: updateError.message,
               });
             });
           } else {
             processResults.push({
-              status: '0',
+              success:false,
               message: data1.message,
             });
           }
@@ -70,7 +70,7 @@ exports.generateAccountall = async (req, res) => {
       } catch (error) {
         console.error(error);
         processResults.push({
-          status: '0',
+          success:false,
           message: error.message,
         });
       }
@@ -79,7 +79,7 @@ exports.generateAccountall = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(200).send({
-      status: '0',
+      success:false,
       message: error.message,
     });
   }
@@ -108,7 +108,7 @@ function createApiOptions(user) {
 
 exports.generateaccountone = async (req, res) => {
   // return res.status(200).send({
-  //   status: '1',
+  //   success:true,
   //   message: req.body,
   // });
 
@@ -122,7 +122,7 @@ exports.generateaccountone = async (req, res) => {
 
     if (!users){
       return res.status(200).send({
-        status: '0',
+        success:false,
         message: "username does not exit",
       });
     }
@@ -155,7 +155,7 @@ exports.generateaccountone = async (req, res) => {
     request(options, function (error, response) {
       if (error){
         return  res.status(200).send({
-          status: "0",
+          success:false,
           message:error,
           res:response,
         });
@@ -177,7 +177,7 @@ exports.generateaccountone = async (req, res) => {
           })
 
           return res.status(200).send({
-            status: "1",
+            success:true,
             user: users.username,
             message: "Account Generated Successful",
             server_res: data
@@ -185,7 +185,7 @@ exports.generateaccountone = async (req, res) => {
 
         }else {
           return res.status(200).send({
-            status: "0",
+            success:false,
             message: data,
           });
         }
@@ -195,7 +195,7 @@ exports.generateaccountone = async (req, res) => {
   // } catch (error) {
   //   console.error(error);
   //   return res.status(200).send({
-  //     status: '0',
+  //     success:false,
   //     body:req.body.username,
   //     message: error.message,
   //   });

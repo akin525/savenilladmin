@@ -18,7 +18,7 @@ exports.fundback =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
+            return res.status(200).send({success:false, message: "User not found",});
         }
         const depo=await bill.findOne({
             where: {
@@ -28,7 +28,7 @@ exports.fundback =  async (req, res) => {
         });
 
         if (!depo){
-            return res.status(200).send({status: "0", message: "transaction not found",});
+            return res.status(200).send({success:false, message: "transaction not found",});
 
         }
         const check= await Reverse.findOne({
@@ -37,7 +37,7 @@ exports.fundback =  async (req, res) => {
             },
         });
         if (check){
-            return res.status(200).send({status: 0, message: "Transaction already reversed",});
+            return res.status(200).send({success:false, message: "Transaction already reversed",});
 
         }
         const cr=parseInt(user.wallet)+parseInt(depo.amount);
@@ -73,7 +73,7 @@ exports.fundback =  async (req, res) => {
         });
 
         return res.status(200).send({
-            status:1,
+            success:true,
             message:"Reverser Successful",
         });
 

@@ -17,7 +17,7 @@ exports.mark=  async (req, res) => {
 
         if (!dep) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Transaction not found",});
+            return res.status(200).send({success:false, message: "Transaction not found",});
         }
         const cr=1;
 
@@ -30,7 +30,7 @@ exports.mark=  async (req, res) => {
 
             });
         return res.status(200).send({
-            status:"1",
+            success:true,
             message:"Transaction Successful",
         });
 

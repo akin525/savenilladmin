@@ -22,7 +22,7 @@ exports.profile =  async (req, res) => {
 
     if (!user) {
       // req.session = null;
-      return res.status(200).send({status: "0", message: "Kindly login your account."});
+      return res.status(200).send({success:false, message: "Kindly login your account."});
     }
 
     const objectToUpdate = {
@@ -38,7 +38,7 @@ exports.profile =  async (req, res) => {
     })
 
     return res.status(200).send({
-      status:"1",
+      success:true,
       message:"Profile Update Successfully",
     });
 

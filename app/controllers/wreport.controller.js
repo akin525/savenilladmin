@@ -114,7 +114,7 @@ exports.week =  async (req, res) => {
         })
         // console.log(allplan);
         return res.status(200).send({
-            status:"1",
+            success:true,
             date:date,
             datamc:weekcuntdata??0,
             tvc:weeksumtvc??0,

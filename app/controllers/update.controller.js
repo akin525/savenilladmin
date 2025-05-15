@@ -18,7 +18,7 @@ exports.Updte =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "User not found",});
+            return res.status(200).send({success:false, message: "User not found",});
         }
         const objectToUpdate = {
             role:req.body.role,
@@ -35,7 +35,7 @@ exports.Updte =  async (req, res) => {
             }
         })
         return res.status(200).send({
-            status:"1",
+            success:true,
             message:"User Updated Successfully",
 
         });

@@ -9,7 +9,7 @@ exports.Credit =  async (req, res) => {
         const objectToUpdate = {
          message:req.body.message,
         }
-       no.findAll({ where: { status: "1"}}).then((result) => {
+       no.findAll({ where: { success:true}}).then((result) => {
             if(result){
                 result[0].set(objectToUpdate);
                 result[0].save();
@@ -17,7 +17,7 @@ exports.Credit =  async (req, res) => {
         })
 
         return res.status(200).send({
-            status:"1",
+            success:true,
             message:"Notification Successfully Update" ,
         });
 

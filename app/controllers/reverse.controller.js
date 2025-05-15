@@ -15,7 +15,7 @@ exports.fund =  async (req, res) => {
             },
         });
         if (!dep){
-            return res.status(200).send({status: 0, message: "transaction not found",});
+            return res.status(200).send({success:false, message: "transaction not found",});
 
         }
         const check= await Reverse.findOne({
@@ -24,7 +24,7 @@ exports.fund =  async (req, res) => {
             },
         });
         if (check){
-            return res.status(200).send({status: 0, message: "Transaction already reversed",});
+            return res.status(200).send({success:false, message: "Transaction already reversed",});
 
         }
         const cr1="2";
@@ -48,7 +48,7 @@ exports.fund =  async (req, res) => {
            refid:dep.refid,
        });
         return res.status(200).send({
-            status:1,
+            success:true,
             message:"Reverser Successful",
         });
 

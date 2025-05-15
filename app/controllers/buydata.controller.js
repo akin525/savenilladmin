@@ -22,7 +22,7 @@ exports.buydata =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({success:false, message: "Kindly login your account."});
         }
 
         const product= await data.findOne({
@@ -54,7 +54,7 @@ console.log(product.tamount);
         if (totalbill)
         {
             return res.status(200).send({
-                status: "0",
+                success:false,
                 message: "duplicate transaction"
             });
         }
@@ -113,14 +113,14 @@ console.log(product.tamount);
                     }
                 })
                 return   res.status(200).send({
-                    status: "1",
+                    success:true,
                     user:user.username,
                     message:product.plan+" Was Successfully Delivered To "+req.body.number,
                     server_res:response.body
                 });
             } else if (data.success===0) {
               return   res.status(200).send({
-                    status: "0",
+                    success:false,
                     message: data.message
                 });
             }

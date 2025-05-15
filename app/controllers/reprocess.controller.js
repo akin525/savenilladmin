@@ -56,20 +56,20 @@ exports.reprocess = async (req, res) => {
 
           if (data1.success === 1) {
             processResults.push({
-              status: '1',
+              success:true,
               message: `${process.plan} Was Successfully Delivered To ${process.phone}`,
               server_res: response.data,
             });
           } else if (data1.success === 0) {
             processResults.push({
-              status: '0',
+              success:false,
               message: data1.message,
             });
           }
         } catch (error) {
           console.error(error);
           processResults.push({
-            status: '0',
+            success:false,
             message: error.message,
           });
         }
@@ -77,13 +77,13 @@ exports.reprocess = async (req, res) => {
     }));
 
     return res.status(200).send({
-      status: '1',
+      success:true,
       message: processResults,
     });
   } catch (error) {
     console.error(error);
     return res.status(200).send({
-      status: '0',
+      success:false,
       message: error.message,
     });
   }
@@ -112,19 +112,19 @@ exports. marksuccess=  async (req, res) => {
             }
         );
         processResults.push({
-          status: '1',
+          success:true,
           message: `Product mark successful`,
         });
       }
     }
     return res.status(200).send({
-      status: '1',
+      success:true,
       message: processResults,
     });
   } catch (error) {
     console.error(error);
     return res.status(500).send({
-      status: "0",
+      success:false,
       message: error.message,
     });
   }
