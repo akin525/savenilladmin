@@ -3,6 +3,7 @@ const User = db.user;
 const safe =db.safelock;
 const deposit=db.deposit;
 const data=db.data;
+const datanew=db.datanew;
 const Server=db.dataserver;
 var request = require('request');
 const {where, Op} = require("sequelize");
@@ -16,7 +17,7 @@ exports.product =  async (req, res) => {
         status: 1,
       },
     });
-    const product = await data.findAll(
+    const product = await datanew.findAll(
         {
           where: {
             server: server.code,
