@@ -7,45 +7,42 @@ const datanew=db.datanew;
 var request = require('request');
 const {where, Op} = require("sequelize");
 
-exports.swit=  async (req, res) => {
-let up="";
-  var boy;
+exports.swit = async (req, res) => {
   try {
     const product = await datanew.findOne({
-      where:{
-        id:req.body.id,
+      where: {
+        id: req.body.id,
       },
     });
-    if (product.status ==1){
-      up=0;
-    };
 
-    if (product.status ==0){
-       up=1;
-    };
-    const objectToUpdate = {
-      status:up,
+    if (!product) {
+      return res.status(404).send({
+        success: false,
+        message: 'Product not found',
+      });
     }
 
-    data.findAll({ where: { id: product.id}}).then((result) => {
-      if(result){
-        result[0].set(objectToUpdate);
-        result[0].save();
-      }
-    })
+    const updatedStatus = product.status === 1 ? 0 : 1;
 
+    const objectToUpdate = { status: updatedStatus };
+
+    const results = await data.findAll({ where: { id: product.id } });
+
+    if (results && results.length > 0) {
+      await results[0].update(objectToUpdate);
+    }
 
     return res.status(200).send({
-      success:true,
-      message:'Status Change successful',
-      product:product,
+      success: true,
+      message: 'Status changed successfully',
+      product,
     });
-
   } catch (error) {
-    return res.status(201).send({
-      message: error.message});
+    return res.status(500).send({
+      success: false,
+      message: error.message,
+    });
   }
-
 };
 exports.updatepro=  async (req, res) => {
   var boy;
