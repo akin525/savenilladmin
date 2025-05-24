@@ -3,6 +3,7 @@ const User = db.user;
 const safe =db.safelock;
 const deposit=db.deposit;
 const data=db.data;
+const datanew=db.datanew;
 var request = require('request');
 const {where, Op} = require("sequelize");
 
@@ -10,17 +11,17 @@ exports.swit=  async (req, res) => {
 let up="";
   var boy;
   try {
-    const product = await data.findOne({
+    const product = await datanew.findOne({
       where:{
         id:req.body.id,
       },
     });
-    if (product.status =="1"){
-      up="0";
+    if (product.status ==1){
+      up=0;
     };
 
-    if (product.status =="0"){
-       up="1";
+    if (product.status ==0){
+       up=1;
     };
     const objectToUpdate = {
       status:up,
@@ -49,11 +50,17 @@ let up="";
 exports.updatepro=  async (req, res) => {
   var boy;
   try {
-    const product = await data.findOne({
+    const product = await datanew.findOne({
       where:{
         id:req.body.productid,
       },
     });
+    if (req.body.amount ==""){
+      return  res.status(200).send({
+        status:"0",
+        message:"Enter a valid amount"
+      });
+    };
     if (req.body.tamount ==""){
       return  res.status(200).send({
         status:"0",
@@ -68,6 +75,7 @@ exports.updatepro=  async (req, res) => {
     };
 
     const objectToUpdate = {
+      amount:req.body.amount,
       tamount:req.body.tamount,
       ramount:req.body.ramount,
     }
